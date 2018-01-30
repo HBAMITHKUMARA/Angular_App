@@ -13,3 +13,7 @@ changes made to test rebase command.
 change: 1 0 0 0
 change: 2 0 0 0
 
+change: 3 0 0 0
+
+change: 4 0 0 0
+
