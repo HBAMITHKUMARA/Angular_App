@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { User } from '../../models'
 
 @Component({
   selector: 'app-signup',
@@ -7,27 +9,24 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  userList: User[] = [];
   signupForm: FormGroup;
-  post: any;
-  email: string;
-  password: string;
-  cPassword: string;
 
-  constructor(private formBuilder: FormBuilder) { 
-    this.signupForm = formBuilder.group({
-      'email': [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(30)])],
-      'password': [null, Validators.compose([Validators.required, Validators.minLength(8)])],
-      'cPassword': [null, Validators.compose([Validators.required, Validators.minLength(8)])]
-    });
+  constructor() { 
   }
 
   ngOnInit() {
+    this.signupForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(8), Validators.maxLength(30)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)]),
+      cPassword: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(15)])
+    });
   }
 
-  addPost(post) {
-    this.email = post.email;
-    this.password = post.password;
-    this.cPassword = post.cPassword;
+  signup() {
+    this.userList.push(this.signupForm.value);
+    console.log('signupForm:  ', this.signupForm);
+    console.log('signupForm value:  ', this.signupForm.value);
   }
 
 }
