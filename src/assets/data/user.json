@@ -1,0 +1,17 @@
+{
+    "user": {
+       "name": "aaa",
+       "email": "aa@gmail.com"
+    },
+    "payment": {
+       "card": {
+          "type": [
+             "credit",
+             "debit",
+             "other"
+          ],
+          "number": 12345,
+          "expiry": 12
+       }
+    }
+}
