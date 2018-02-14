@@ -12,6 +12,12 @@
             class="form-control"
             id="name"
             placeholder="Enter Your Name">
+            <div class="alert alert-danger" *ngIf="signupForm.get('name').touched && signupForm.get('name').hasError('required')">
+                Name is required
+              </div>
+              <div class="alert alert-danger" *ngIf="signupForm.get('name').touched && signupForm.get('name').hasError('minlength')">
+                Minimum of 3 characters
+              </div>
         </div>
 
       <div formGroupName="account">

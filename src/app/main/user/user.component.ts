@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
-import 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
 
 import { CommonService } from '../services';
 
