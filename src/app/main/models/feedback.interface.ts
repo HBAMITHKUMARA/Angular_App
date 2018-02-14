@@ -1,4 +1,7 @@
 export interface Feedback {
     email: string;
-    comment: string;
+    comment: {
+        title: string;
+        description: string;
+    }
 }
