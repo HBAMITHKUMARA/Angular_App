@@ -5,53 +5,41 @@
         <legend>Signup Form</legend>
 
         <div class="form-group">
-          <label for="email">Email address</label>
-          <input formControlName="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="example@email.com">
-          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-          <div 
-            class="alert alert-danger" 
-            *ngIf="signupForm.get('email').touched && signupForm.get('email').invalid">
-            <div *ngIf="signupForm.get('email').hasError('required')">
-              Email Id is required.
-            </div>
-            <div *ngIf="signupForm.get('email').hasError('email') && !signupForm.get('email').hasError('required') && !signupForm.get('email').hasError('minlength')">
-              Email Id is invalid.
-            </div>
-            <div *ngIf="signupForm.get('email').hasError('minlength')">
-              Minimum length 8 characters is required.
-            </div>
-          </div>
+          <label for="name">Name</label>
+          <input 
+            formControlName="name"
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter Your Name">
+        </div>
+
+      <div formGroupName="account">
+
+        <div class="form-group">
+          <label for="email">Email Id</label>
+          <input formControlName="email" 
+            type="email" 
+            class="form-control" 
+            id="email" 
+            aria-describedby="emailHelp" 
+            placeholder="Enter Your Email Id">
+          <small id="emailHelp" class="form-text text-muted">
+            We'll never share your email with anyone else.
+          </small>
         </div>
         
         <div class="form-group">
           <label for="password">Password</label>
-          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
-          <div 
-            class="alert alert-danger" 
-            *ngIf="signupForm.get('password').touched && signupForm.get('password').invalid">
-            <div *ngIf="signupForm.get('password').hasError('required')">
-              Password is required.
-            </div>
-            <div *ngIf="signupForm.get('password').hasError('minlength')">
-              Minimum length 5 characters is required.
-            </div>
-          </div>
+          <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter Password">
         </div>
 
         <div class="form-group">
-          <label for="cPassword">Confirm Password</label>
-          <input formControlName="cPassword" type="password" class="form-control" id="cPassword" placeholder="Retype Password">
-          <div 
-          class="alert alert-danger" 
-            *ngIf="signupForm.get('cPassword').touched && signupForm.get('cPassword').invalid">
-            <div *ngIf="signupForm.get('cPassword').hasError('required')">
-              Password is required.
-            </div>
-            <div *ngIf="signupForm.get('cPassword').hasError('minlength')">
-              Minimum length 5 characters is required.
-            </div>
-          </div>
+          <label for="confirm">Confirm Password</label>
+          <input formControlName="confirm" type="password" class="form-control" id="confirm" placeholder="Retype Password">
         </div>
+
+      </div>
         
         <div class="form-check">
           <label class="form-check-label">
@@ -60,10 +48,7 @@
           </label>
         </div>
         
-        <button 
-          type="submit" 
-          class="btn btn-primary" 
-          [disabled]="signupForm.invalid">
+        <button type="submit" class="btn btn-primary" [disabled]="signupForm.invalid">
           Submit
         </button>
 
@@ -75,6 +60,6 @@
 
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let user of userList">
-    {{user.email}}
+    {{user.name}}
   </li>
 </ul>
