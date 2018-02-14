@@ -1,2 +1,3 @@
-export * from './hero';
-export * from './user';
+export * from './feedback.interface';
+export * from './hero.interface';
+export * from './user.interface';
