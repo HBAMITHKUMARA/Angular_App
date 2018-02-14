@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import 'rxjs/Observable';
 
 import { CommonService } from '../services';
 
@@ -36,13 +36,13 @@ export class UserComponent implements OnInit {
         this.loadingUserComponent = false;
       },
       (error) => { console.log('error in retrieving data from the server', error); }
-    )
+      );
   }
 
   getUser() {
     this.commonService.query('./assets/data/user.json', new HttpParams, 'user')
       .subscribe(
-        (res) => { this.user = res; this.loadingUserComponent = false;},
+        (res) => { this.user = res; this.loadingUserComponent = false; },
         (error) => { console.log('error in retriving user data:  ', error); }
       );
   }
@@ -50,7 +50,7 @@ export class UserComponent implements OnInit {
   getPayment() {
     this.commonService.query('./assets/data/user.json', new HttpParams, 'payment')
     .subscribe(
-      (res) => { this.payment = res; this.loadingUserComponent = false;},
+      (res) => { this.payment = res; this.loadingUserComponent = false; },
       (error) => { console.log('error in retriving payment data:  ', error); }
     );
   }

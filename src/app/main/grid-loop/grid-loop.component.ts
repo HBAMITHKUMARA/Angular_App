@@ -25,7 +25,6 @@ export class GridLoopComponent implements OnInit, OnDestroy  {
 
   ngOnInit() {
     this.populateHeros();
-    setTimeout
     this.heroesObservable = this.heroService
       .getHeroes('./assets/data/hero.json', new HttpParams());
   }
