@@ -1,16 +1,17 @@
 <div class="row justify-content-center">
   <div class="col-md-6 col-sm-8">
-    <form>
+    <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)">
         <legend>Feedback Form</legend>
 
         <div class="form-group">
           <label for="email">Email Id</label>
           <input 
-            ngModel 
+            ngModel
             name="email" 
             #email="ngModel" 
             (change)="log(email)" 
-            required minlength="8" 
+            required 
+            minlength="8" 
             maxlength="30" 
             type="email" 
             class="form-control" 
@@ -32,19 +33,42 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="comment">Comments</label>
-          <textarea 
-            ngModel 
-            name="comment" 
-            class="form-control" 
-            id="comment" 
-            rows="2" 
-            placeholder="Please write your comments here...">
-          </textarea>
+        <div ngModelGroup="comment">
+          <legend>Feedback</legend>
+          <div class="form-group">
+            <label for="title">Title</label>          
+            <textarea 
+              [(ngModel)]="feedback.comment.title" 
+              name="title" 
+              class="form-control" 
+              id="title" 
+              required
+              minlength="3"
+              placeholder="Please write your comments here...">
+            </textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>          
+            <textarea 
+              [(ngModel)]="feedback.comment.description" 
+              name="description" 
+              class="form-control" 
+              id="description" 
+              rows="2" 
+              required
+              minlength="3"
+              placeholder="Please write your comments here...">
+            </textarea>
+          </div>
         </div>
         
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" [disabled]="feedbackForm.invalid">Submit</button>
     </form>
   </div>
+</div>
+
+<div>
+  <p>{{feedbackForm.value | json}}</p>
+  <p>{{feedback | json}}</p>
 </div>
