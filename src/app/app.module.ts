@@ -17,6 +17,7 @@ import { UserComponent } from './main/user/user.component';
 import { SignupComponent } from './main/shared/signup/signup.component';
 import { SigninComponent } from './main/shared/signin/signin.component';
 import { FeedbackComponent } from './main/shared/feedback/feedback.component';
+import { CardsComponent } from './main/shared/components/cards/cards.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'feedback', component: FeedbackComponent },
+  { path: 'cards', component: CardsComponent},
   { path: '**', redirectTo: '' }
 ];
 
@@ -39,7 +41,8 @@ const routes: Routes = [
     UserComponent,
     SignupComponent,
     SigninComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
