@@ -1,11 +1,25 @@
-<ul class="list-inline">
-  <li class="list-inline-item"><a routerLink="">Home</a></li>
-  <li class="list-inline-item"><a routerLink="grid">Grid Example</a></li>
-  <li class="list-inline-item"><a routerLink="user">User</a></li>
-  <li class="list-inline-item"><a routerLink="cards">Cards</a></li>
-  <li class="list-inline-item"><a routerLink="signup">Signup</a></li>
-  <li class="list-inline-item"><a routerLink="signin">Signin</a></li>
-  <li class="list-inline-item"><a routerLink="feedback">Feedback</a></li>
-</ul>
+<app-navbar></app-navbar>
 
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <ul class="list-group">
+        <li class="list-group-item"><a routerLink="grid">Grid Example</a></li>
+        <li class="list-group-item"><a routerLink="user">User</a></li>
+        <li class="list-group-item"><a routerLink="cards">Cards Tabs Example</a></li>
+        <li class="list-group-item"><a routerLink="signup">Signup (reactive form ex)</a></li>
+        <li class="list-group-item"><a routerLink="signin">Signin (reactive form ex)</a></li>
+        <li class="list-group-item"><a routerLink="feedback">Feedback (template driven form ex)</a></li>
+        <li class="list-group-item"><a routerLink="blog-main">Blog Main</a></li>
+        <li class="list-group-item"><a routerLink="blog-home">Blog Home</a></li>
+        <li class="list-group-item"><a routerLink="blog-post">Blog Post</a></li>
+        <li class="list-group-item">ComingSoon</li>
+      </ul>
+    </div>
+    <div class="col-sm-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

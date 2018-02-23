@@ -8,16 +8,21 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main/home/home.component';
-import { GridLoopComponent } from './main/grid-loop/grid-loop.component';
-import { ApiService, HeroService, CommonService } from './main/services';
-import { TempComponent } from './main/temp/temp.component';
+import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
+import { ApiService, HeroService, CommonService } from './main/shared/services';
+import { TempComponent } from './main/components/temp/temp.component';
 import { MarkdownPipe } from './main/shared/pipes/markdown.pipe';
-import { AlertComponent } from './main/shared/components/alert/alert.component';
-import { UserComponent } from './main/user/user.component';
-import { SignupComponent } from './main/shared/signup/signup.component';
-import { SigninComponent } from './main/shared/signin/signin.component';
-import { FeedbackComponent } from './main/shared/feedback/feedback.component';
-import { CardsComponent } from './main/shared/components/cards/cards.component';
+import { AlertComponent } from './main/components/alert/alert.component';
+import { UserComponent } from './main/components/user/user.component';
+import { SignupComponent } from './main/components/signup/signup.component';
+import { SigninComponent } from './main/components/signin/signin.component';
+import { FeedbackComponent } from './main/components/feedback/feedback.component';
+import { CardsComponent } from './main/components/cards/cards.component';
+import { BlogMainComponent } from './main/components/blog/blog-main/blog-main.component';
+import { BlogPostComponent } from './main/components/blog/blog-post/blog-post.component';
+import { BlogHomeComponent } from './main/components/blog/blog-home/blog-home.component';
+import { NavbarComponent } from './main/components/navbar/navbar.component';
+import { FooterComponent } from './main/components/footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +31,10 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'feedback', component: FeedbackComponent },
-  { path: 'cards', component: CardsComponent},
+  { path: 'cards', component: CardsComponent },
+  { path: 'blog-main', component: BlogMainComponent },
+  { path: 'blog-post', component: BlogPostComponent },
+  { path: 'blog-home', component: BlogHomeComponent},
   { path: '**', redirectTo: '' }
 ];
 
@@ -42,7 +50,12 @@ const routes: Routes = [
     SignupComponent,
     SigninComponent,
     FeedbackComponent,
-    CardsComponent
+    CardsComponent,
+    BlogMainComponent,
+    BlogPostComponent,
+    BlogHomeComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
