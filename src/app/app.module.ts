@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './main/home/home.component';
+import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
 import { ApiService, HeroService, CommonService } from './main/shared/services';
 import { TempComponent } from './main/components/temp/temp.component';
@@ -24,6 +24,7 @@ import { BlogHomeComponent } from './main/components/blog/blog-home/blog-home.co
 import { NavbarComponent } from './main/components/navbar/navbar.component';
 import { FooterComponent } from './main/components/footer/footer.component';
 import { KeysPipe } from './main/shared/pipes/keys.pipe';
+import { SideNavbarComponent } from './main/components/app-helpers/side-navbar/side-navbar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -57,7 +58,8 @@ const routes: Routes = [
     BlogHomeComponent,
     NavbarComponent,
     FooterComponent,
-    KeysPipe
+    KeysPipe,
+    SideNavbarComponent
   ],
   imports: [
     BrowserModule,
