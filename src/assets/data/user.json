@@ -1,17 +1,32 @@
-{
+ {
     "user": {
-       "name": "aaa",
-       "email": "aa@gmail.com"
-    },
+        "userName": "TESTUSER",
+        "fullName":"test user", 
+        "email":"test@abs.com", 
+        "password":"qwerty"
+    }, 
     "payment": {
-       "card": {
-          "type": [
-             "credit",
-             "debit",
-             "other"
-          ],
-          "number": 12345,
-          "expiry": 12
-       }
+        "cards":[ {
+                "type":"credit", 
+                "upi":"", 
+                "number":12345, 
+                "expiry":12
+            },  {
+                "type":"wallet", 
+                "upi":"12345@abs", 
+                "number":12345, 
+                "expiry":12
+            }
+        ]
+    }, 
+    "contact": {
+        "email": {
+            "primary":"test-primary@abs.com", 
+            "secondary":"test-secondary@abs.com"
+        }, 
+        "phone": {
+            "primary":9876543210, 
+            "secondary":9876543211
+        }
     }
 }

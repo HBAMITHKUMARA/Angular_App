@@ -13,6 +13,7 @@ export class UserComponent implements OnInit {
   loadingUserComponent = true;
   user = {};
   payment = {};
+  contact = {};
 
   constructor(private commonService: CommonService) { }
 
@@ -28,11 +29,13 @@ export class UserComponent implements OnInit {
   populate() {
     Observable.forkJoin(
       this.commonService.query('./assets/data/user.json', new HttpParams, 'user'),
-      this.commonService.query('./assets/data/user.json', new HttpParams, 'payment')
+      this.commonService.query('./assets/data/user.json', new HttpParams, 'payment'),
+      this.commonService.query('./assets/data/user.json', new HttpParams, 'contact')
     ).subscribe(
       (res) => {
         this.user = res[0];
         this.payment = res[1];
+        this.contact = res[2];
         this.loadingUserComponent = false;
       },
       (error) => { console.log('error in retrieving data from the server', error); }

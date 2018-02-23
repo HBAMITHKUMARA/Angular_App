@@ -23,6 +23,7 @@ import { BlogPostComponent } from './main/components/blog/blog-post/blog-post.co
 import { BlogHomeComponent } from './main/components/blog/blog-home/blog-home.component';
 import { NavbarComponent } from './main/components/navbar/navbar.component';
 import { FooterComponent } from './main/components/footer/footer.component';
+import { KeysPipe } from './main/shared/pipes/keys.pipe';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -55,7 +56,8 @@ const routes: Routes = [
     BlogPostComponent,
     BlogHomeComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
