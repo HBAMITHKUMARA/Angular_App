@@ -1,0 +1,46 @@
+<div [hidden]="!loading">
+  <p>Loading...</p>
+</div>
+
+<div [hidden]="error">
+  <app-alert 
+    alertType="danger" 
+    errorMessage="error in loading the data">
+  </app-alert>
+</div>
+
+<div class="row" [hidden]="loading">
+  <div class="col-md-4" *ngFor="let hero of heroesObservable | async">
+    <div class="thumbnail my-3">
+        <img alt="Bootstrap Thumbnail First" 
+            src="http://standrews.mgfl.net/files/2016/01/Coming-soon-clipart-rcifqf.png"
+            height="40%"
+            width="40%" />
+        <div class="caption">
+          <h3>{{hero.id}}</h3>
+          <p>{{hero.name}}</p>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">
+            Action
+          </button>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<div id="myModal" class="modal fade justify-content-center" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+        <p>Angular Bootstrap Snippets</p>
+				<button type="button" class="close" data-dismiss="modal">×</button>
+			</div>
+			<div class="modal-body">
+				<p>It's Cool and awesome!!!!!!!</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
