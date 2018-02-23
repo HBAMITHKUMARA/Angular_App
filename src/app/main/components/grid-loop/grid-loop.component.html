@@ -1,0 +1,26 @@
+<div [hidden]="!loading">
+  <p>Loading...</p>
+</div>
+
+<div [hidden]="error">
+  <app-alert 
+    alertType="danger" 
+    errorMessage="error in loading the data">
+  </app-alert>
+</div>
+
+<div class="row" [hidden]="loading">
+    <div class="col-md-4" *ngFor="let hero of heroesObservable | async">
+      <div class="thumbnail">
+          <img alt="Bootstrap Thumbnail First" 
+              src="http://standrews.mgfl.net/files/2016/01/Coming-soon-clipart-rcifqf.png"
+              height="40%"
+              width="40%" />
+          <div class="caption">
+            <h3>{{hero.id}}</h3>
+            <p>{{hero.name}}</p>
+            <p><a class="btn btn-primary" href="#">Action</a></p>
+          </div>
+        </div>
+    </div>
+  </div>
