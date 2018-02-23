@@ -1,0 +1,18 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-feedback-tab" data-toggle="tab" href="#nav-feedback" role="tab" aria-controls="nav-feedback" aria-selected="true">Feedback</a>
+    <a class="nav-item nav-link" id="nav-signin-tab" data-toggle="tab" href="#nav-signin" role="tab" aria-controls="nav-signin" aria-selected="false">SignIn</a>
+    <a class="nav-item nav-link" id="nav-signup-tab" data-toggle="tab" href="#nav-signup" role="tab" aria-controls="nav-signup" aria-selected="false">SignUp</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-feedback" role="tabpanel" aria-labelledby="nav-feedback-tab">
+    <app-feedback></app-feedback>
+  </div>
+  <div class="tab-pane fade" id="nav-signin" role="tabpanel" aria-labelledby="nav-signin-tab">
+    <app-signin></app-signin>
+  </div>
+  <div class="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
+    <app-signup></app-signup>
+  </div>
+</div>

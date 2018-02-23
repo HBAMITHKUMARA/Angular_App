@@ -14,9 +14,6 @@ import { TempComponent } from './main/components/temp/temp.component';
 import { MarkdownPipe } from './main/shared/pipes/markdown.pipe';
 import { AlertComponent } from './main/components/alert/alert.component';
 import { UserComponent } from './main/components/user/user.component';
-import { SignupComponent } from './main/components/signup/signup.component';
-import { SigninComponent } from './main/components/signin/signin.component';
-import { FeedbackComponent } from './main/components/feedback/feedback.component';
 import { CardsComponent } from './main/components/cards/cards.component';
 import { BlogMainComponent } from './main/components/blog/blog-main/blog-main.component';
 import { BlogPostComponent } from './main/components/blog/blog-post/blog-post.component';
@@ -25,9 +22,15 @@ import { NavbarComponent } from './main/components/navbar/navbar.component';
 import { FooterComponent } from './main/components/footer/footer.component';
 import { KeysPipe } from './main/shared/pipes/keys.pipe';
 import { SideNavbarComponent } from './main/components/app-helpers/side-navbar/side-navbar.component';
+import { TabsComponent } from './main/components/tabs/tabs.component';
+import { FormsComponent } from './main/components/forms/forms.component';
+import { SignupComponent } from './main/components/forms/form-helpers/signup/signup.component';
+import { SigninComponent } from './main/components/forms/form-helpers/signin/signin.component';
+import { FeedbackComponent } from './main/components/forms/form-helpers/feedback/feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'forms', component: FormsComponent },
   { path: 'grid', component: GridLoopComponent },
   { path: 'user', component: UserComponent },
   { path: 'signup', component: SignupComponent },
@@ -59,7 +62,9 @@ const routes: Routes = [
     NavbarComponent,
     FooterComponent,
     KeysPipe,
-    SideNavbarComponent
+    SideNavbarComponent,
+    TabsComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
