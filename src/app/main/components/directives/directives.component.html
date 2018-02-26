@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>structural directive example</h3>
+    <ul class="list-group">
+      <div class="" *ngFor="let n of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+        <li class="list-group-item" *ngIf="n%2 == 0">{{n}}</li>
+        <li class="list-group-item" *ngIf="n%2 != 0" appHighlight>{{n}}</li>
+      </div>
+    </ul>
+  </div>
+  <div class="col-md-12">
+    <h3>attribute directive example</h3>
+    <h4>NgClass</h4>
+    <ul *ngFor="let person of people">
+      <li [ngClass]="{
+        'text-success':person.country === 'UK',
+        'text-primary':person.country === 'USA',
+        'text-danger':person.country === 'HK'
+      }">{{ person.name }} ({{ person.country }})
+      </li>
+    </ul>
+  </div>
+</div>
