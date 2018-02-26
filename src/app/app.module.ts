@@ -27,6 +27,8 @@ import { FormsComponent } from './main/components/forms/forms.component';
 import { SignupComponent } from './main/components/forms/form-helpers/signup/signup.component';
 import { SigninComponent } from './main/components/forms/form-helpers/signin/signin.component';
 import { FeedbackComponent } from './main/components/forms/form-helpers/feedback/feedback.component';
+import { HighlightDirective } from './main/shared/directives/highlight.directive';
+import { DirectivesComponent } from './main/components/directives/directives.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,7 +66,9 @@ const routes: Routes = [
     KeysPipe,
     SideNavbarComponent,
     TabsComponent,
-    FormsComponent
+    FormsComponent,
+    HighlightDirective,
+    DirectivesComponent
   ],
   imports: [
     BrowserModule,
