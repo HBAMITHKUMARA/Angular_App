@@ -32,6 +32,7 @@ import { DirectivesComponent } from './main/components/directives/directives.com
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'directives', component: DirectivesComponent },
   { path: 'forms', component: FormsComponent },
   { path: 'grid', component: GridLoopComponent },
   { path: 'user', component: UserComponent },

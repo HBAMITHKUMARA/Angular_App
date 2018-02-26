@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Feedback } from '../../shared/models';
+import { Feedback } from '../../../../shared/models';
 
 @Component({
   selector: 'app-feedback',
