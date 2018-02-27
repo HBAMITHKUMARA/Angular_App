@@ -34,10 +34,14 @@ import { HostlistenerHighlightDirective } from './main/shared/directives/hostlis
 import { HostbindingHighlightDirective } from './main/shared/directives/hostbinding-highlight.directive';
 import { Hostbinding2propertyHighlightDirective } from './main/shared/directives/hostbinding2property-highlight.directive';
 import { CustomStructuralDirectiveDirective } from './main/shared/directives/custom-structural-directive.directive';
+import { Example1Component } from './main/components/eventemitter/example1/example1.component';
+import { Example2Component } from './main/components/eventemitter/example2/example2.component';
+import { Example1Service } from './main/shared/services/eventemitter/example1.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'directives', component: DirectivesComponent },
+  { path: 'eventEmitterExample1', component: Example1Component },
   { path: 'forms', component: FormsComponent },
   { path: 'grid', component: GridLoopComponent },
   { path: 'user', component: UserComponent },
@@ -79,7 +83,9 @@ const routes: Routes = [
     HostlistenerHighlightDirective,
     HostbindingHighlightDirective,
     Hostbinding2propertyHighlightDirective,
-    CustomStructuralDirectiveDirective
+    CustomStructuralDirectiveDirective,
+    Example1Component,
+    Example2Component
   ],
   imports: [
     BrowserModule,
@@ -88,7 +94,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ApiService, HeroService, CommonService],
+  providers: [ApiService, HeroService, CommonService, Example1Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

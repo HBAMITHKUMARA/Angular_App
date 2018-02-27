@@ -10,11 +10,11 @@ export class HostlistenerHighlightDirective implements OnInit {
   ngOnInit() { }
 
   @HostListener('mouseenter') mouseover(eventData: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'yellow', false, false);
+    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'yellow');
   }
 
   @HostListener('mouseleave') mouseleave(eventData: Event) {
-    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent', false, false);
+    this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
   }
 
 }
