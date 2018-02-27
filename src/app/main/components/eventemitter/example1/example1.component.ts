@@ -15,8 +15,11 @@ export class Example1Component implements OnInit {
   }
 
   onClick() {
-    this.example1Service.statusUpdated.emit('event emitter works!');
-    console.log('event emitted');
+    this.example1Service.statusUpdated.emit('event emitted by Example1Component');
+  }
+
+  onEventCreate(status) {
+      console.log(status);
   }
 
 }

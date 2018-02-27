@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { Example1Service } from '../../../shared/services';
 
@@ -8,17 +8,22 @@ import { Example1Service } from '../../../shared/services';
   styleUrls: ['./example2.component.css']
 })
 export class Example2Component implements OnInit {
+  @Output() eventCreated = new EventEmitter<any>();
 
   constructor(private example1Service: Example1Service) {
     this.example1Service.statusUpdated.subscribe(
       (status: string) => {
-        alert('Im from Example2Component: ' + status);
-        console.log('Im from Example2Component: ' + status);
+        alert(status);
+        console.log(status);
       }
     );
   }
 
   ngOnInit() {
+  }
+
+  onClick1(event) {
+    this.eventCreated.emit('event emitted by Example2Component');
   }
 
 }
