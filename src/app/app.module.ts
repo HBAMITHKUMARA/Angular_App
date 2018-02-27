@@ -29,6 +29,11 @@ import { SigninComponent } from './main/components/forms/form-helpers/signin/sig
 import { FeedbackComponent } from './main/components/forms/form-helpers/feedback/feedback.component';
 import { HighlightDirective } from './main/shared/directives/highlight.directive';
 import { DirectivesComponent } from './main/components/directives/directives.component';
+import { BetterHighlightDirective } from './main/shared/directives/better-highlight.directive';
+import { HostlistenerHighlightDirective } from './main/shared/directives/hostlistener-highlight.directive';
+import { HostbindingHighlightDirective } from './main/shared/directives/hostbinding-highlight.directive';
+import { Hostbinding2propertyHighlightDirective } from './main/shared/directives/hostbinding2property-highlight.directive';
+import { CustomStructuralDirectiveDirective } from './main/shared/directives/custom-structural-directive.directive';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,7 +74,12 @@ const routes: Routes = [
     TabsComponent,
     FormsComponent,
     HighlightDirective,
-    DirectivesComponent
+    DirectivesComponent,
+    BetterHighlightDirective,
+    HostlistenerHighlightDirective,
+    HostbindingHighlightDirective,
+    Hostbinding2propertyHighlightDirective,
+    CustomStructuralDirectiveDirective
   ],
   imports: [
     BrowserModule,
