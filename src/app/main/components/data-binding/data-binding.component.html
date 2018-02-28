@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Example 1: <small>Local references in templates</small></h4>
+    <input type="text" #localReference>
+    <p>local obj ref in HTML: {{localReference}}<p>
+    <p>local value in HTML: {{localReference.value}}<p>
+    <button class="btn btn-secondary btn-block" type="button" name="button" (click)="onClick(localReference)">Click me</button>
+    <p>value assigned to component property: {{data}}</p>
+  </div>
+</div>
