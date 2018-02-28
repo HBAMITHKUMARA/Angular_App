@@ -37,11 +37,13 @@ import { CustomStructuralDirectiveDirective } from './main/shared/directives/cus
 import { Example1Component } from './main/components/eventemitter/example1/example1.component';
 import { Example2Component } from './main/components/eventemitter/example2/example2.component';
 import { Example1Service } from './main/shared/services/eventemitter/example1.service';
+import { DataBindingComponent } from './main/components/data-binding/data-binding.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
-  { path: 'eventEmitterExample1', component: Example1Component },
+  { path: 'event-emitter-example1', component: Example1Component },
   { path: 'forms', component: FormsComponent },
   { path: 'grid', component: GridLoopComponent },
   { path: 'user', component: UserComponent },
@@ -85,7 +87,8 @@ const routes: Routes = [
     Hostbinding2propertyHighlightDirective,
     CustomStructuralDirectiveDirective,
     Example1Component,
-    Example2Component
+    Example2Component,
+    DataBindingComponent
   ],
   imports: [
     BrowserModule,
