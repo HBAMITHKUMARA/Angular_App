@@ -38,9 +38,12 @@ import { Example1Component } from './main/components/eventemitter/example1/examp
 import { Example2Component } from './main/components/eventemitter/example2/example2.component';
 import { Example1Service } from './main/shared/services/eventemitter/example1.service';
 import { DataBindingComponent } from './main/components/data-binding/data-binding.component';
+import { ComponentLifecycleComponent } from './main/components/component-lifecycle/component-lifecycle.component';
+import { ComponentLifecycleHelperComponent } from './main/components/component-lifecycle/component-lifecycle-helper/component-lifecycle-helper.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'component-lifecycle', component: ComponentLifecycleComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'event-emitter-example1', component: Example1Component },
@@ -88,7 +91,9 @@ const routes: Routes = [
     CustomStructuralDirectiveDirective,
     Example1Component,
     Example2Component,
-    DataBindingComponent
+    DataBindingComponent,
+    ComponentLifecycleComponent,
+    ComponentLifecycleHelperComponent
   ],
   imports: [
     BrowserModule,
