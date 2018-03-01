@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-12">
-    <p>This is example shows cross component communication using service, event emitter</p>
-    <p>This example uses Example1Component, Example2Component and Example1Service</p>
-    <p>Check console</p>
-    <button class="btn btn-primary btn-block" type="button" name="button" (click)="onClick()">Click me</button>
+    <h4>Example 1</h4>
+    <p>This example shows cross component communication using service, event emitter</p>
+    <p>This example uses Example1Service for cross communication between Example1Component and Example2Component.</p>
+    <button class="btn btn-primary btn-block" type="button" name="button" (click)="onClick()">
+      button from example1 component
+    </button>
   </div>
   <div class="col-md-12">
     <app-example2 (eventCreated)="onEventCreate($event)"></app-example2>

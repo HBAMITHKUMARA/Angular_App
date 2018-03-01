@@ -20,6 +20,7 @@ export class Example1Component implements OnInit {
 
   onEventCreate(status) {
       console.log(status);
+      alert(status);
   }
 
 }
