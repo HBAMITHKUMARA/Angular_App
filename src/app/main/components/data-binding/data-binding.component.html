@@ -1,10 +1,23 @@
 <div class="row">
   <div class="col-md-12">
     <h4>Example 1: <small>Local references in templates</small></h4>
-    <input type="text" #localReference>
+    <input class="form-control" type="text" #localReference>
     <p>local obj ref in HTML: {{localReference}}<p>
     <p>local value in HTML: {{localReference.value}}<p>
+    <p>value assigned to component property 'data': {{data}}</p>
     <button class="btn btn-secondary btn-block" type="button" name="button" (click)="onClick(localReference)">Click me</button>
-    <p>value assigned to component property: {{data}}</p>
+  </div>
+  <div class="col-md-12">
+    <h4>Example 2: <small>Local references in templates using ViewChild</small></h4>
+    <input class="form-control" type="text" #localReferenceViewChild>
+    <p>local value in HTML: {{localReferenceViewChild.value}}</p>
+    <button class="btn btn-secondary btn-block" type="button" name="button" (click)="onClick1()">Click me</button>
+    <p>value assigned to component property 'data2': {{data2}}</p>
+  </div>
+  <div class="col-md-12">
+    <h4>Example 3: <small>ng-content</small></h4>
+    <app-temp>
+      <p>this part of html is displayed using ng-content</p>
+    </app-temp>
   </div>
 </div>

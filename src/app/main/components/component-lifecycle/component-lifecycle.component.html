@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Example 1: Component Lifecycle</h4>
+    <input class="form-control" type="text" #localReference>
+    <button class="btn btn-info btn-block btn-sm" (click)="onClick(localReference)">Click me</button>
+    <app-component-lifecycle-helper [changeData]="data">
+    </app-component-lifecycle-helper>
+  </div>
+</div>
