@@ -10,6 +10,9 @@ import {
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
+  ViewChild,
+  ElementRef,
+  ContentChild
 } from '@angular/core';
 
 @Component({
@@ -24,10 +27,11 @@ export class ComponentLifecycleHelperComponent implements OnInit,
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy,
+  OnDestroy
  {
-  // @ViewChild('dataReference') dataReference: ElementRef;
   @Input() changeData: string;
+  @ViewChild('dataReference') dataReference: ElementRef;
+  @ContentChild('contentReference') contentReference: ElementRef;
 
   constructor() {
     console.log('constructor called!');
@@ -40,7 +44,8 @@ export class ComponentLifecycleHelperComponent implements OnInit,
 
   ngOnInit() {
     console.log('ngOnInit called!');
-    // console.log('text content:  ', this.dataReference.nativeElement.textContent);
+    console.log('dataReference @ngOnInit:  ', this.dataReference.nativeElement.textContent);
+    console.log('contentReference @ngOnInit:  ', this.contentReference.nativeElement.textContent);
   }
 
   ngDoCheck() {
@@ -49,6 +54,7 @@ export class ComponentLifecycleHelperComponent implements OnInit,
 
   ngAfterContentInit() {
     console.log('ngAfterContentInit called!');
+    console.log('contentReference @ngAfterContentInit:  ', this.contentReference.nativeElement.textContent);
   }
 
   ngAfterContentChecked() {
@@ -57,6 +63,7 @@ export class ComponentLifecycleHelperComponent implements OnInit,
 
   ngAfterViewInit() {
     console.log('ngAfterViewInit called!');
+    console.log('dataReference @ngOnInit:  ', this.dataReference.nativeElement.textContent);
   }
 
   ngAfterViewChecked() {
