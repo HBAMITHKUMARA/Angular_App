@@ -42,7 +42,8 @@ import { ComponentLifecycleComponent } from './main/components/component-lifecyc
 import { ComponentLifecycleHelperComponent } from './main/components/component-lifecycle/component-lifecycle-helper/component-lifecycle-helper.component';
 import { RouterComponent } from './main/components/router/router.component';
 import { Router1Component } from './main/components/router/router1/router1.component';
-import { BooksComponent } from './main/components/router/books/books.component';
+import { BooksComponent } from './main/components/books-router/books/books.component';
+import { BookDetailsComponent } from './main/components/books-router/book-details/book-details.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { BooksComponent } from './main/components/router/books/books.component';
     ComponentLifecycleHelperComponent,
     RouterComponent,
     Router1Component,
-    BooksComponent
+    BooksComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

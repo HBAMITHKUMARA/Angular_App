@@ -1,0 +1,72 @@
+[
+      {
+      "id": 1,
+      "name": "Black & Decker 18v Cordless Drill",
+      "author": "Alana Floyd",
+      "pages": 105,
+      "instock": false
+   },
+      {
+      "id": 5,
+      "name": "Rockwell Shopseries 1.5 Amp Corner Sander Kit",
+      "author": "Gunner Curry",
+      "pages": 642,
+      "instock": false
+   },
+      {
+      "id": 4,
+      "name": "Black & Decker 1375w Heat Gun",
+      "author": "Kyle Chang",
+      "pages": 368,
+      "instock": true
+   },
+      {
+      "id": 2,
+      "name": "Bosch 2250-01 14.4 Volt Single Speed Cordless Drill And Driver",
+      "author": "Clara Garner",
+      "pages": 420,
+      "instock": true
+   },
+      {
+      "id": 8,
+      "name": "Drill America 3/16-1/2x16ths Step Drill Bit",
+      "author": "Carlee Wyatt",
+      "pages": 627,
+      "instock": true
+   },
+      {
+      "id": 6,
+      "name": "Dremel 7700-1/15 7.2-volt Multipro Cordless Rotary Kit With 15 Accessories",
+      "author": "Allison Hahn",
+      "pages": 107,
+      "instock": false
+   },
+      {
+      "id": 8,
+      "name": "Black And Decker 12v Max Lithium Ion Cordless Drill, Ldx112c",
+      "author": "Paul Stephens",
+      "pages": 189,
+      "instock": false
+   },
+      {
+      "id": 2,
+      "name": "Porter Cable-piece15cslk 7-1/4\" 15-amp Circular Saw",
+      "author": "Savanna Cleveland",
+      "pages": 429,
+      "instock": false
+   },
+      {
+      "id": 5,
+      "name": "Hyundai Hpc11090 11-gal Air Compressor Kit",
+      "author": "Giovanni Allison",
+      "pages": 743,
+      "instock": false
+   },
+      {
+      "id": 3,
+      "name": "Bosch/rotozip/skil 2354-02 4-volt I \" X 03 Cordless Screwdriver",
+      "author": "Memphis Sheppard",
+      "pages": 139,
+      "instock": true
+   }
+]
