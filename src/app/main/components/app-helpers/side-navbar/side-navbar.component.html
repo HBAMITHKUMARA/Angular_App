@@ -1,27 +1,26 @@
-<ul class="list-group">
-  <li class="list-group-item"><a routerLink="blog-main">Blog</a></li>
-  <li class="list-group-item"><a routerLink="cards">Cards</a></li>
-  <li class="list-group-item"><a routerLink="component-lifecycle">Component Lifecycle</a></li>
-  <li class="list-group-item"><a routerLink="data-binding">Data Binding</a></li>
-  <li class="list-group-item"><a routerLink="directives">Directives</a></li>
-  <li class="list-group-item">
-    <a routerLink="event-emitter-example1">Event Emitter</a>
-  </li>
-  <li class="list-group-item"><a routerLink="forms">Forms</a></li>
-  <li class="list-group-item"><a routerLink="grid">Grid Example</a></li>
-  <li class="list-group-item">
-    <a routerLink="signup" data-toggle="tooltip" data-placement="bottom" title="Signup Form">
-      Reactive Form
-    </a>
-  </li>
-  <li class="list-group-item">
-    <a routerLink="feedback" data-toggle="tooltip" data-placement="bottom" title="Feedback Form">
-      Template Driven Form
-    </a>
-  </li>
-  <li class="list-group-item"><a routerLink="user">User</a></li>
-  <li class="list-group-item"><a routerLink="blog-main">Blog Main</a></li>
-  <li class="list-group-item"><a routerLink="blog-home">Blog Home</a></li>
-  <li class="list-group-item"><a routerLink="blog-post">Blog Post</a></li>
-  <li class="list-group-item">ComingSoon</li>
-</ul>
+<div class="list-group">
+  <a
+    class="list-group-item list-group-item-action"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{exact: true}"
+    routerLink="">
+      Home
+  </a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="blog-main">Blog</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="cards">Cards</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="component-lifecycle">
+    Component Lifecycle
+  </a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="data-binding">Data Binding</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="directives">Directives</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="forms">Forms</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="grid">Grid Example</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="router">Router Example</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="signup">Reactive Form</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="feedback">Template Driven Form</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="user">User</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="blog-main">Blog Main</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="blog-home">Blog Home</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active" routerLink="blog-post">Blog Post</a>
+  <a class="list-group-item list-group-item-action" routerLinkActive="active">Coming Soon</a>
+</div>

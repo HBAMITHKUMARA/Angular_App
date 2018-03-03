@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule, Routes } from '@angular/router';
 // FormsModule --> for template driven forms
 // ReactiveFormsModule --> for reactive forms (model driven forms)
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { AppRoutes } from './app.routes';
 import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
 import { ApiService, HeroService, CommonService } from './main/shared/services';
@@ -40,25 +40,9 @@ import { Example1Service } from './main/shared/services/eventemitter/example1.se
 import { DataBindingComponent } from './main/components/data-binding/data-binding.component';
 import { ComponentLifecycleComponent } from './main/components/component-lifecycle/component-lifecycle.component';
 import { ComponentLifecycleHelperComponent } from './main/components/component-lifecycle/component-lifecycle-helper/component-lifecycle-helper.component';
-
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'component-lifecycle', component: ComponentLifecycleComponent },
-  { path: 'data-binding', component: DataBindingComponent },
-  { path: 'directives', component: DirectivesComponent },
-  { path: 'event-emitter-example1', component: Example1Component },
-  { path: 'forms', component: FormsComponent },
-  { path: 'grid', component: GridLoopComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signin', component: SigninComponent },
-  { path: 'feedback', component: FeedbackComponent },
-  { path: 'cards', component: CardsComponent },
-  { path: 'blog-main', component: BlogMainComponent },
-  { path: 'blog-post', component: BlogPostComponent },
-  { path: 'blog-home', component: BlogHomeComponent},
-  { path: '**', redirectTo: '' }
-];
+import { RouterComponent } from './main/components/router/router.component';
+import { Router1Component } from './main/components/router/router1/router1.component';
+import { BooksComponent } from './main/components/router/books/books.component';
 
 @NgModule({
   declarations: [
@@ -93,14 +77,17 @@ const routes: Routes = [
     Example2Component,
     DataBindingComponent,
     ComponentLifecycleComponent,
-    ComponentLifecycleHelperComponent
+    ComponentLifecycleHelperComponent,
+    RouterComponent,
+    Router1Component,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    AppRoutes
   ],
   providers: [ApiService, HeroService, CommonService, Example1Service],
   bootstrap: [AppComponent]

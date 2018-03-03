@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComponentLifecycleComponent implements OnInit {
   data: string = 'default data';
-  content: string: = 'lifecycle-helper-component';
+  content: string = 'lifecycle-helper-component';
 
   constructor() { }
 
