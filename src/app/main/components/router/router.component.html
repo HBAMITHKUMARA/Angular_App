@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12">
+    <h4>Relative path and Absolute path</h4>
+    <p>without '/' and with './' represents the relative path</p>
+    <p>with '/' represents the absolute path</p>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onClick()">
+      Go to router1
+    </button>
+    <hr>
+    <p> All the 3 buttons works fine because the navigator by default uses host:port/'path' </p>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload()">
+      Reload page using relative path 'router' (relative path)
+    </button>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload1()">
+      Reload page using relative path '/router' (absolute path)
+    </button>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload2()">
+      Reload page using relative path './router' (relative path)
+    </button>
+    <hr>
+    <p>Use relativeTo javascript object to tell the navigator on which path it's current on</p>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload6()">
+      Reload page using relative path 'router' (relative path)
+    </button>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload7()">
+      Reload page using relative path '/router' (absolute path)
+    </button>
+    <button class="btn btn-default btn-sm btn-block" type="button" name="button" (click)="onReload8()">
+      Reload page using relative path './router' (relative path)
+    </button>
+  </div>
+</div>
