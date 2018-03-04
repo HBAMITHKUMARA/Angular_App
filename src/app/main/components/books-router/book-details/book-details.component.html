@@ -1,4 +1,19 @@
-<p>
-  your requested book {{book.id}} with id is loading...
-  <a class="btn btn-info btn-sm pull-right" [routerLink]="['/books', 1]">Go to Book 1</a>
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <h4>your requested book with id {{book.id}}</h4>
+    <h5>Edit Book Details (route using routerLink)</h5>
+    <a
+      class="btn btn-info btn-sm"
+      [routerLink]="['/books', book.id, 'edit']"
+      [queryParams]="{allowEdit: '1'}"
+      [fragment]="'editing'">
+        Edit Book Details
+    </a>
+    <h5>Edit Book Details (route using router navigate fn)</h5>
+    <a class="btn btn-info btn-sm text-light" (click)="editBook(book.id)">
+      Edit Book Details
+    </a>
+    <hr>
+    <a class="btn btn-info btn-sm" [routerLink]="['/books']">Go to Books list</a>
+  </div>
+</div>
