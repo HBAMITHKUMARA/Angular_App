@@ -1,6 +1,6 @@
 # Angular App
 
-### This project has working code snippets of angular and bootstrap components.
+### This project has working code snippets of angular and bootstrap components
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
 
 ## Development server
