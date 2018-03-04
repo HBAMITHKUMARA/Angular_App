@@ -44,6 +44,8 @@ import { RouterComponent } from './main/components/router/router.component';
 import { Router1Component } from './main/components/router/router1/router1.component';
 import { BooksComponent } from './main/components/books-router/books/books.component';
 import { BookDetailsComponent } from './main/components/books-router/book-details/book-details.component';
+import { BookEditComponent } from './main/components/books-router/book-edit/book-edit.component';
+import { BookService } from './main/shared/services/book.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,8 @@ import { BookDetailsComponent } from './main/components/books-router/book-detail
     RouterComponent,
     Router1Component,
     BooksComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    BookEditComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +94,7 @@ import { BookDetailsComponent } from './main/components/books-router/book-detail
     HttpClientModule,
     AppRoutes
   ],
-  providers: [ApiService, HeroService, CommonService, Example1Service],
+  providers: [ApiService, BookService, CommonService, Example1Service, HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

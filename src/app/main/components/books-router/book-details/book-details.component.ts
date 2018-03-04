@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 // import { Book } from '../../../shared/models';
@@ -14,7 +14,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   book1: { id: number, name: string, author: string };
   private subscriptionBookDetailsComponent: Subscription;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.getParams();
@@ -24,23 +24,31 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.book = {
       id: this.route.snapshot.params['id']
     }
-    // in case page loads on the same component
-    // for example if component on book/1 then you load book/4 on the same component/pages
-    // because route.snapshot initializes once per one instance
     this.subscriptionBookDetailsComponent = this.route.params.subscribe(
       (params: Params) => {
         this.book.id = params['id'];
       }
-    )
+    );
   }
 
-  // if the route has multiple params like books/:id/:name/:author
+  // if route has multiple params like books/:id/:name/:author then
   getParams1() {
     this.book1 = {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name'],
       author: this.route.snapshot.params['author']
     }
+    this.subscriptionBookDetailsComponent = this.route.params.subscribe(
+      (params: Params) => {
+        this.book1.id = params['id'];
+        this.book1.name = params['name'];
+        this.book1.author = params['author'];
+      }
+    );
+  }
+
+  editBook(id: number) {
+    this.router.navigate(['/books', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
   }
 
   ngOnDestroy(): void {
