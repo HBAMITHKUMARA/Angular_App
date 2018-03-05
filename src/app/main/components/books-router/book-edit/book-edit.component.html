@@ -1,10 +1,20 @@
 <div class="row">
   <div class="col-md-12">
-    <h4>Edit Book</h4>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let kv of book | keys">{{kv.key}}: {{kv.value}}</li>
-    </ul>
+    <div *ngIf="!allowEdit">
+      <h4>Book: {{id}}</h4>
+      <h5>Sorry! You don't have the permission to edit this item.</h5>
+    </div>
+    <div *ngIf="allowEdit">
+      <h4>Book: {{id}}</h4>
+      <h5>Edit this item details.</h5>
+      <button class="btn btn-info btn-sm" (click)="onSubEdit()">Goto Edit-Sub</button>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <hr>
+    <h5>Note:</h5>
+    <p>Use of snapshot is not recommended since it applies only at the time of loading the component.</p>
+    <p>This component is called by book-details component with params, query params and fragment.</p>
+    <p>This example has the logic to retrieve params, query params and fragment.</p>
   </div>
 </div>
-
-{{test | json}}

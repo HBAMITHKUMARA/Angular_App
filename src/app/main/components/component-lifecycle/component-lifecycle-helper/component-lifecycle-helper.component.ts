@@ -27,8 +27,7 @@ export class ComponentLifecycleHelperComponent implements OnInit,
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
-  OnDestroy
- {
+  OnDestroy {
   @Input() changeData: string;
   @ViewChild('dataReference') dataReference: ElementRef;
   @ContentChild('contentReference') contentReference: ElementRef;

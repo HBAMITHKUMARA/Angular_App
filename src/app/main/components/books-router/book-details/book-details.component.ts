@@ -23,7 +23,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   getParams() {
     this.book = {
       id: this.route.snapshot.params['id']
-    }
+    };
     this.subscriptionBookDetailsComponent = this.route.params.subscribe(
       (params: Params) => {
         this.book.id = params['id'];
@@ -37,7 +37,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
       id: this.route.snapshot.params['id'],
       name: this.route.snapshot.params['name'],
       author: this.route.snapshot.params['author']
-    }
+    };
     this.subscriptionBookDetailsComponent = this.route.params.subscribe(
       (params: Params) => {
         this.book1.id = params['id'];

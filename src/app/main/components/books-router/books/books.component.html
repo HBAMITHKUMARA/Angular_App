@@ -10,8 +10,17 @@
         </p>
       </div>
       <div class="card-footer">
-        <a class="btn btn-info btn-sm pull-right" [routerLink]="['/books', book.id]">View Details</a>
+        <a class="btn btn-info btn-sm btn-block" [routerLink]="['/books', book.id]">View Details</a>
+        <a 
+          class="btn btn-info btn-sm btn-block" 
+          [routerLink]="['/books', book.id, 'edit']"
+          [queryParams]="{allowEdit: book.instock === true ? '1': '0'}"
+        >
+          Edit Book
+        </a>
       </div>
     </div>
   </div>
 </div>
+
+<router-outlet></router-outlet>
