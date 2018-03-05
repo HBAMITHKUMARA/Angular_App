@@ -18,9 +18,9 @@ export class BookService {
     return this.apiService.get('./assets/data/books.json', new HttpParams())
     .map(
       (books) => {
-        return books.find(
-          (book) => book.id === id;
-        );
+        return books.find((book) => {
+          return book.id === id;
+        });
       }
     )
     .catch(

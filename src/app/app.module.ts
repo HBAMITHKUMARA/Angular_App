@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
 import { ApiService, HeroService, CommonService } from './main/shared/services';
@@ -46,6 +46,8 @@ import { BooksComponent } from './main/components/books-router/books/books.compo
 import { BookDetailsComponent } from './main/components/books-router/book-details/book-details.component';
 import { BookEditComponent } from './main/components/books-router/book-edit/book-edit.component';
 import { BookService } from './main/shared/services/book.service';
+import { BookEditSubComponent } from './main/components/books-router/book-edit-sub/book-edit-sub.component';
+import { PageNotFoundComponent } from './main/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -85,14 +87,16 @@ import { BookService } from './main/shared/services/book.service';
     Router1Component,
     BooksComponent,
     BookDetailsComponent,
-    BookEditComponent
+    BookEditComponent,
+    BookEditSubComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutes
+    AppRoutingModule
   ],
   providers: [ApiService, BookService, CommonService, Example1Service, HeroService],
   bootstrap: [AppComponent]

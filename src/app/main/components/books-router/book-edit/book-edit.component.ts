@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-
-import { BookService } from '../../../shared/services';
-import { Book } from '../../../shared/models';
 
 @Component({
   selector: 'app-book-edit',
@@ -12,55 +9,43 @@ import { Book } from '../../../shared/models';
   styleUrls: ['./book-edit.component.css']
 })
 export class BookEditComponent implements OnInit {
-  book: Observable<Book>;
   id: number;
-  test: any;
+  allowEdit: boolean;
 
-  constructor(private bookService: BookService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.id = this.getParams();
-    this.populateBookEditComponent();
-    this.getParams114().subscribe(
-      (res) => {
-        this.test = res;
-      }
-    );
-  }
-
-  populateBookEditComponent() {
-    this.bookService.getBook(1).subscribe(
-      (res) => {
-        this.book = res;
-        console.log('res:  ', res);
-      }
-    );
-    console.log('book:  ', this.book);
-  }
-
-  // not able to implement with bookService
-  getParams114(): Observable<number> {
-    return new Observable.create(
-      (observer) => {
-        let id = this.route.snapshot.params['id'];
-        this.route.params.subscribe(
-          (params: Params) => {
-            id = params['id'];
-          }
-        );
-        observer.next(id);
-      }
-    );
+    this.getParams();
   }
 
   getParams() {
-    this.id = this.route.snapshot.params['id'];
+    // console.log(this.route.snapshot.params['id']);
+    // console.log(this.route.snapshot.queryParams['allowEdit']);
+    // console.log(this.route.snapshot.fragment);
+
     this.route.params.subscribe(
       (params: Params) => {
         this.id = params['id'];
+        // console.log('params:  ', params);
       }
     );
-    console.log('id:  ', this.id);
+
+    this.route.queryParams.subscribe(
+      (queryParams: Params) => {
+        this.allowEdit = queryParams['allowEdit'] === '1' ? true : false;
+        // console.log('queryParams:  ', queryParams['allowEdit']);
+      }
+    );
+
+    this.route.fragment.subscribe(
+      (fragment) => {
+        // console.log('fragment:  ', fragment);
+      }
+    );
+  }
+
+  onSubEdit() {
+    this.router.navigate(['sub'], { relativeTo: this.route, queryParamsHandling: 'preserve' });
   }
 
 }
