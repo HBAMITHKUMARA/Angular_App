@@ -48,6 +48,9 @@ import { BookEditComponent } from './main/components/books-router/book-edit/book
 import { BookService } from './main/shared/services/book.service';
 import { BookEditSubComponent } from './main/components/books-router/book-edit-sub/book-edit-sub.component';
 import { PageNotFoundComponent } from './main/components/page-not-found/page-not-found.component';
+import { AuthGuard } from './main/auth/auth-guard.service';
+import { AuthService } from './main/auth/auth.service';
+import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
 
 @NgModule({
   declarations: [
@@ -98,7 +101,15 @@ import { PageNotFoundComponent } from './main/components/page-not-found/page-not
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ApiService, BookService, CommonService, Example1Service, HeroService],
+  providers: [
+    ApiService,
+    BookService,
+    CommonService,
+    Example1Service,
+    HeroService,
+    AuthGuard,
+    AuthService,
+    CanDeactivateGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
