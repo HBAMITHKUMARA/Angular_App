@@ -52,6 +52,7 @@ import { AuthGuard } from './main/auth/auth-guard.service';
 import { AuthService } from './main/auth/auth.service';
 import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
 import { ErrorComponent } from './main/components/error/error.component';
+import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
 
 @NgModule({
   declarations: [
@@ -111,7 +112,8 @@ import { ErrorComponent } from './main/components/error/error.component';
     HeroService,
     AuthGuard,
     AuthService,
-    CanDeactivateGuard ],
+    CanDeactivateGuard,
+    BooksResolverService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
