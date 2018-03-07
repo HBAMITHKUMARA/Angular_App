@@ -25,20 +25,26 @@ import { BookDetailsComponent } from './main/components/books-router/book-detail
 import { BookEditComponent } from './main/components/books-router/book-edit/book-edit.component';
 import { BookEditSubComponent } from './main/components/books-router/book-edit-sub/book-edit-sub.component';
 import { PageNotFoundComponent } from './main/components/page-not-found/page-not-found.component';
+import { AuthGuard } from './main/auth/auth-guard.service';
+import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'books', component: BooksComponent, children: [
+  { path: 'books', canActivateChild: [AuthGuard], component: BooksComponent, children: [
     { path: ':id', component: BookDetailsComponent },
     { path: ':id/edit', component: BookEditComponent },
   ]},
-  { path: 'books/:id/edit/sub', component: BookEditSubComponent },
+  { path: 'books/:id/edit/sub', canDeactivate: [CanDeactivateGuard], component: BookEditSubComponent },
   { path: 'component-lifecycle', component: ComponentLifecycleComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'event-emitter-example1', component: Example1Component },
-  { path: 'forms', component: FormsComponent },
+  { path: 'forms', component: FormsComponent, children: [
+    { path: 'feedback', component: FeedbackComponent },
+    { path: 'signup', component: SignupComponent },
+    { path: 'signin', component: SigninComponent }
+  ] },
   { path: 'grid', component: GridLoopComponent },
   { path: 'user', component: UserComponent },
   { path: 'signup', component: SignupComponent },

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../../../shared/services';
 import { Book } from '../../../shared/models';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-books',
@@ -13,12 +14,15 @@ import { Book } from '../../../shared/models';
   styleUrls: ['./books.component.css']
 })
 export class BooksComponent implements OnInit, OnDestroy {
-  loadingBooksComponent: boolean = true;
-  errorBooksComponent: boolean = false;
+  loadingBooksComponent = true;
+  errorBooksComponent = false;
   private subscription: Subscription;
   books: Observable<Book[]>;
 
-  constructor(private apiService: ApiService, private router: Router) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.populateBooks();
@@ -39,6 +43,14 @@ export class BooksComponent implements OnInit, OnDestroy {
         console.log('error in retrieving books data');
       }
     );
+  }
+
+  onLogin() {
+    this.authService.login();
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 
   ngOnDestroy(): void {
