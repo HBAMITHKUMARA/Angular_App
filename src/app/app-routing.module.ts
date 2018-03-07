@@ -27,6 +27,7 @@ import { BookEditSubComponent } from './main/components/books-router/book-edit-s
 import { PageNotFoundComponent } from './main/components/page-not-found/page-not-found.component';
 import { AuthGuard } from './main/auth/auth-guard.service';
 import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
+import { ErrorComponent } from './main/components/error/error.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
   { path: 'blog-main', component: BlogMainComponent },
   { path: 'blog-post', component: BlogPostComponent },
   { path: 'blog-home', component: BlogHomeComponent },
-  { path: 'page-not-found', component: PageNotFoundComponent },
+  // { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: 'page-not-found', component: ErrorComponent, data: { message: 'Page Not Found.'} },
   { path: '**', redirectTo: 'page-not-found'}
 ];
 
