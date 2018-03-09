@@ -29,6 +29,7 @@ import { AuthGuard } from './main/auth/auth-guard.service';
 import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
 import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
+import { ObservablesComponent } from './main/components/observables/observables.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -57,6 +58,7 @@ const appRoutes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'feedback', component: FeedbackComponent },
   { path: 'cards', component: CardsComponent },
+  { path: 'observable', component: ObservablesComponent },
   { path: 'router', component: RouterComponent },
   { path: 'router1', component: Router1Component },
   { path: 'blog-main', component: BlogMainComponent },

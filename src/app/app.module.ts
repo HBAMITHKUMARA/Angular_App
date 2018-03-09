@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
-import { ApiService, HeroService, CommonService } from './main/shared/services';
+import { ApiService, HeroService, CommonService, ObservableService } from './main/shared/services';
 import { TempComponent } from './main/components/temp/temp.component';
 import { MarkdownPipe } from './main/shared/pipes/markdown.pipe';
 import { AlertComponent } from './main/components/alert/alert.component';
@@ -54,6 +54,8 @@ import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub
 import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
 import { ObservablesComponent } from './main/components/observables/observables.component';
+import { Observable1Component } from './main/components/observables/observable1/observable1.component';
+import { Observable2Component } from './main/components/observables/observable2/observable2.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +99,9 @@ import { ObservablesComponent } from './main/components/observables/observables.
     BookEditSubComponent,
     PageNotFoundComponent,
     ErrorComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    Observable1Component,
+    Observable2Component
   ],
   imports: [
     BrowserModule,
@@ -115,7 +119,8 @@ import { ObservablesComponent } from './main/components/observables/observables.
     AuthGuard,
     AuthService,
     CanDeactivateGuard,
-    BooksResolverService ],
+    BooksResolverService,
+    ObservableService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
