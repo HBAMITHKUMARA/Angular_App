@@ -53,6 +53,7 @@ import { AuthService } from './main/auth/auth.service';
 import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub/can-deactivate-guard.service';
 import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
+import { ObservablesComponent } from './main/components/observables/observables.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { BooksResolverService } from './main/components/books-router/books/books
     BookEditComponent,
     BookEditSubComponent,
     PageNotFoundComponent,
-    ErrorComponent
+    ErrorComponent,
+    ObservablesComponent
   ],
   imports: [
     BrowserModule,
