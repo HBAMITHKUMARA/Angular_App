@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../../../shared/services';
 import { Book } from '../../../shared/models';
-import { AuthService } from '../../../auth/auth.service';
+import { BooksAuthService } from '../../../auth/books-auth.service';
 
 @Component({
   selector: 'app-books',
@@ -22,7 +22,7 @@ export class BooksComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private router: Router,
-    private authService: AuthService,
+    private booksAuthService: BooksAuthService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -46,15 +46,16 @@ export class BooksComponent implements OnInit, OnDestroy {
     //   }
     // );
 
+    // resolver method
     this.route.data.subscribe((res) => this.books = res['books']);
   }
 
   onLogin() {
-    this.authService.login();
+    this.booksAuthService.login();
   }
 
   onLogout() {
-    this.authService.logout();
+    this.booksAuthService.logout();
   }
 
   ngOnDestroy(): void {

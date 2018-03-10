@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import * as firebase from 'firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 // FormsModule --> for template driven forms
 // ReactiveFormsModule --> for reactive forms (model driven forms)
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -57,6 +61,10 @@ import { ObservablesComponent } from './main/components/observables/observables.
 import { Observable1Component } from './main/components/observables/observable1/observable1.component';
 import { Observable2Component } from './main/components/observables/observable2/observable2.component';
 import { PipesComponent } from './main/components/pipes/pipes.component';
+import { LoginComponent } from './main/components/firebase/login/login.component';
+import { environment } from '../environments/environment';
+import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
+import { BooksAuthService } from './main/auth/books-auth.service';
 
 @NgModule({
   declarations: [
@@ -103,14 +111,18 @@ import { PipesComponent } from './main/components/pipes/pipes.component';
     ObservablesComponent,
     Observable1Component,
     Observable2Component,
-    PipesComponent
+    PipesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.config, 'test-abf'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     ApiService,
@@ -122,7 +134,9 @@ import { PipesComponent } from './main/components/pipes/pipes.component';
     AuthService,
     CanDeactivateGuard,
     BooksResolverService,
-    ObservableService ],
+    ObservableService,
+    BooksAuthService,
+    BooksAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

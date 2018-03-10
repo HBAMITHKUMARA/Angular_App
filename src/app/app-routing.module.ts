@@ -31,12 +31,14 @@ import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
 import { ObservablesComponent } from './main/components/observables/observables.component';
 import { PipesComponent } from './main/components/pipes/pipes.component';
+import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
+import { LoginComponent } from './main/components/firebase/login/login.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'books',
-    canActivateChild: [AuthGuard],
+    canActivateChild: [BooksAuthGuard],
     component: BooksComponent,
     resolve: { books: BooksResolverService },
     children: [
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
   ]},
   { path: 'books/:id/edit/sub', canDeactivate: [CanDeactivateGuard], component: BookEditSubComponent },
   { path: 'component-lifecycle', component: ComponentLifecycleComponent },
+  { path: 'cards', canActivate: [AuthGuard], component: CardsComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'event-emitter-example1', component: Example1Component },
@@ -54,11 +57,11 @@ const appRoutes: Routes = [
     { path: 'signin', component: SigninComponent }
   ] },
   { path: 'grid', component: GridLoopComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'user', component: UserComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'feedback', component: FeedbackComponent },
-  { path: 'cards', component: CardsComponent },
   { path: 'observable', component: ObservablesComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'router', component: RouterComponent },
