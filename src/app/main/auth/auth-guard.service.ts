@@ -1,29 +1,33 @@
-import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from '@angular/router';
+import { Injectable, OnInit } from '@angular/core';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+import { AuthService } from '../auth/auth.service';
 import { Observable } from 'rxjs/Observable';
 
-import { AuthService } from './auth.service';
-
 @Injectable()
-export class AuthGuard implements CanActivate, CanActivateChild {
+export class AuthGuard implements OnInit, CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private router: Router, private authService: AuthService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    return this.authService.isAuthenticated().then(
-      (authenticated: boolean) => {
-        if (authenticated) {
-          return true;
-        } else {
-          this.router.navigate(['/']);
-          return false;
-        }
-      }
-    );
+  ngOnInit() {
   }
 
-  canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    return this.canActivate(childRoute, state);
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
+    this.authService.authenticated.subscribe(
+      (res: boolean) => {
+        return res;
+      }
+    );
+
+    return this.authService.isLoggedIn()
+    .take(1)
+    .map(user => !!user)
+    .do(loggedIn => {
+      if (!loggedIn) {
+        console.log('access denied');
+        this.router.navigate(['/login'], { queryParams: { targetUrl: state.url }});
+      }
+    });
   }
 
 }

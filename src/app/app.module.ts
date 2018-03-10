@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import * as firebase from 'firebase';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 // FormsModule --> for template driven forms
 // ReactiveFormsModule --> for reactive forms (model driven forms)
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -9,7 +13,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
-import { ApiService, HeroService, CommonService } from './main/shared/services';
+import { ApiService, HeroService, CommonService, ObservableService } from './main/shared/services';
 import { TempComponent } from './main/components/temp/temp.component';
 import { MarkdownPipe } from './main/shared/pipes/markdown.pipe';
 import { AlertComponent } from './main/components/alert/alert.component';
@@ -54,6 +58,13 @@ import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub
 import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
 import { ObservablesComponent } from './main/components/observables/observables.component';
+import { Observable1Component } from './main/components/observables/observable1/observable1.component';
+import { Observable2Component } from './main/components/observables/observable2/observable2.component';
+import { PipesComponent } from './main/components/pipes/pipes.component';
+import { LoginComponent } from './main/components/firebase/login/login.component';
+import { environment } from '../environments/environment';
+import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
+import { BooksAuthService } from './main/auth/books-auth.service';
 
 @NgModule({
   declarations: [
@@ -97,14 +108,21 @@ import { ObservablesComponent } from './main/components/observables/observables.
     BookEditSubComponent,
     PageNotFoundComponent,
     ErrorComponent,
-    ObservablesComponent
+    ObservablesComponent,
+    Observable1Component,
+    Observable2Component,
+    PipesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.config, 'test-abf'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [
     ApiService,
@@ -115,7 +133,10 @@ import { ObservablesComponent } from './main/components/observables/observables.
     AuthGuard,
     AuthService,
     CanDeactivateGuard,
-    BooksResolverService ],
+    BooksResolverService,
+    ObservableService,
+    BooksAuthService,
+    BooksAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
