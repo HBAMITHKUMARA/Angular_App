@@ -65,6 +65,8 @@ import { LoginComponent } from './main/components/firebase/login/login.component
 import { environment } from '../environments/environment';
 import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
 import { BooksAuthService } from './main/auth/books-auth.service';
+import { PhoneLoginComponent } from './main/components/firebase/phone-login/phone-login.component';
+import { WindowService } from './main/auth/window.service';
 
 @NgModule({
   declarations: [
@@ -112,7 +114,8 @@ import { BooksAuthService } from './main/auth/books-auth.service';
     Observable1Component,
     Observable2Component,
     PipesComponent,
-    LoginComponent
+    LoginComponent,
+    PhoneLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -136,7 +139,8 @@ import { BooksAuthService } from './main/auth/books-auth.service';
     BooksResolverService,
     ObservableService,
     BooksAuthService,
-    BooksAuthGuard ],
+    BooksAuthGuard,
+    WindowService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
