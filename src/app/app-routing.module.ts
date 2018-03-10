@@ -30,6 +30,7 @@ import { CanDeactivateGuard } from './main/components/books-router/book-edit-sub
 import { ErrorComponent } from './main/components/error/error.component';
 import { BooksResolverService } from './main/components/books-router/books/books-resolver.service';
 import { ObservablesComponent } from './main/components/observables/observables.component';
+import { PipesComponent } from './main/components/pipes/pipes.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   { path: 'feedback', component: FeedbackComponent },
   { path: 'cards', component: CardsComponent },
   { path: 'observable', component: ObservablesComponent },
+  { path: 'pipes', component: PipesComponent },
   { path: 'router', component: RouterComponent },
   { path: 'router1', component: Router1Component },
   { path: 'blog-main', component: BlogMainComponent },

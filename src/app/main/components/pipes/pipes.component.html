@@ -1,0 +1,12 @@
+<h1>Pipes</h1>
+<h5>String {{name}}</h5>
+<p>uppercase --> {{name | uppercase}}</p>
+<h5>Date {{now}}</h5>
+<p>date --> {{now | date}}</p>
+<p>date: 'full' --> {{now | date: 'full'}}</p>
+<p>date: 'shortTime' --> {{now | date: 'shortTime'}}</p>
+<p>date: 'fullDate' --> {{now | date: 'fullDate'}}</p>
+<h5>Object(keys-values)</h5>
+<p>user --> {{user}}</p>
+<p>json --> {{user | json}}</p>
+<p>custom pipe (keys) --> {{user | keys | json}}</p>

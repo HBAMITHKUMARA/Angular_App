@@ -56,6 +56,7 @@ import { BooksResolverService } from './main/components/books-router/books/books
 import { ObservablesComponent } from './main/components/observables/observables.component';
 import { Observable1Component } from './main/components/observables/observable1/observable1.component';
 import { Observable2Component } from './main/components/observables/observable2/observable2.component';
+import { PipesComponent } from './main/components/pipes/pipes.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { Observable2Component } from './main/components/observables/observable2/
     ErrorComponent,
     ObservablesComponent,
     Observable1Component,
-    Observable2Component
+    Observable2Component,
+    PipesComponent
   ],
   imports: [
     BrowserModule,

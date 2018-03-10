@@ -9,13 +9,15 @@ import { Observer } from 'rxjs/Observer';
   styleUrls: ['./observables.component.css']
 })
 export class ObservablesComponent implements OnInit, OnDestroy {
+  test1: number;
+  test2: string;
   observable1Sub: Subscription;
   observable2Sub: Subscription;
 
   constructor() { }
 
   ngOnInit() {
-    // this.Observable1();
+    this.Observable1();
     this.Observable2();
   }
 
@@ -23,7 +25,7 @@ export class ObservablesComponent implements OnInit, OnDestroy {
     const observable1 = Observable.interval(2000);
     this.observable1Sub = observable1.subscribe(
       (num: number) => {
-        console.log('--> ', num);
+        this.test1 = num;
       }
     );
   }
@@ -44,13 +46,13 @@ export class ObservablesComponent implements OnInit, OnDestroy {
     );
     this.observable2Sub = myObservable.subscribe(
       (data: string) => {
-        console.log(data);
+        this.test2 = data;
       },
       // (error: string) => {
       //   console.log(error);
       // },
       () => {
-        console.log('completed');
+        this.test2 = 'completed';
       }
     );
   }
