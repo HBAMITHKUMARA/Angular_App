@@ -67,6 +67,13 @@ import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
 import { BooksAuthService } from './main/auth/books-auth.service';
 import { PhoneLoginComponent } from './main/components/firebase/phone-login/phone-login.component';
 import { WindowService } from './main/auth/window.service';
+import { UsersComponent } from './main/components/ngrx/users/users.component';
+import { UsersDetailComponent } from './main/components/ngrx/users-detail/users-detail.component';
+import { UsersEditComponent } from './main/components/ngrx/users-edit/users-edit.component';
+import { UsersService } from './main/components/ngrx/users.service';
+import { ModalComponent } from './main/components/ngrx/modal/modal.component';
+import { UsersAddComponent } from './main/components/ngrx/users-add/users-add.component';
+import { UsersListComponent } from './main/components/ngrx/users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +122,13 @@ import { WindowService } from './main/auth/window.service';
     Observable2Component,
     PipesComponent,
     LoginComponent,
-    PhoneLoginComponent
+    PhoneLoginComponent,
+    UsersComponent,
+    UsersDetailComponent,
+    UsersEditComponent,
+    ModalComponent,
+    UsersAddComponent,
+    UsersListComponent
   ],
   imports: [
     BrowserModule,
@@ -140,7 +153,8 @@ import { WindowService } from './main/auth/window.service';
     ObservableService,
     BooksAuthService,
     BooksAuthGuard,
-    WindowService ],
+    WindowService,
+    UsersService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
