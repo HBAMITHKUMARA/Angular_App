@@ -1,3 +1,27 @@
-<p>
-  users-detail works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>User Details</h3>
+          <ul class="list-unstyled">
+            <li *ngFor="let data of user | async | keys">
+              <div *ngIf="isObject(data.value)">
+                <h6>{{data.key}}</h6>
+                <ul>
+                  <li *ngFor="let kv of data.value | keys">
+                    {{kv.key}}: {{kv.value}}
+                  </li>
+                </ul>
+              </div>
+              <div *ngIf="!isObject(data.value)">
+                {{data.key}}: {{data.value}}
+              </div>
+            </li>
+          </ul>
+          <a class="btn btn-info btn-sm" [routerLink]="['edit']">Edit Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
