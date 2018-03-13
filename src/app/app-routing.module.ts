@@ -33,10 +33,21 @@ import { ObservablesComponent } from './main/components/observables/observables.
 import { PipesComponent } from './main/components/pipes/pipes.component';
 import { BooksAuthGuard } from './main/auth/books-auth-guard.service';
 import { LoginComponent } from './main/components/firebase/login/login.component';
+import { UsersComponent } from './main/components/ngrx/users/users.component';
+import { UsersDetailComponent } from './main/components/ngrx/users-detail/users-detail.component';
+import { UsersEditComponent } from './main/components/ngrx/users-edit/users-edit.component';
+import { UsersAddComponent } from './main/components/ngrx/users-add/users-add.component';
+import { UsersListComponent } from './main/components/ngrx/users-list/users-list.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'ngrx-users', component: UsersComponent, children: [
+    { path: '', component: UsersListComponent, pathMatch: 'full' },
+    { path: 'add', component: UsersAddComponent },
+    { path: ':id', component: UsersDetailComponent },
+    { path: ':id/edit', component: UsersEditComponent }
+  ]},
   { path: 'books',
     canActivateChild: [BooksAuthGuard],
     component: BooksComponent,
