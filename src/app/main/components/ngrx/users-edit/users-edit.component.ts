@@ -32,7 +32,7 @@ export class UsersEditComponent implements OnInit {
       const id = +params['id'];
       this.usersService.getUser(id).subscribe((res) => {
         this.user = res;
-        this.userForm.setValue(this.user);
+        this.userForm.patchValue(this.user);
       });
     });
   }
@@ -41,7 +41,7 @@ export class UsersEditComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       id: ['', [Validators.required, Validators.minLength(1)]],
       name: ['', [Validators.required, Validators.minLength(3)]],
-      username: ['', [Validators.required, Validators.minLength(10)]],
+      username: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.minLength(8)]],
       address: this.formBuilder.group({
         street: ['', [Validators.required, Validators.minLength(3)]],
@@ -65,7 +65,7 @@ export class UsersEditComponent implements OnInit {
 
   saveChanges({ value, valid, disabled }: { value: Users, valid: boolean, disabled: boolean }) {
     this.user = this.userForm.value;
-    console.log('user details updated');
+    console.log('user form:  ', this.userForm);
     console.log('user details:  ', this.user);
   }
 
