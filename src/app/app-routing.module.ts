@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './main/components/home/home.component';
 import { GridLoopComponent } from './main/components/grid-loop/grid-loop.component';
-import { UserComponent } from './main/components/user/user.component';
 import { CardsComponent } from './main/components/cards/cards.component';
 import { BlogMainComponent } from './main/components/blog/blog-main/blog-main.component';
 import { BlogPostComponent } from './main/components/blog/blog-post/blog-post.component';
@@ -54,7 +53,7 @@ const appRoutes: Routes = [
     resolve: { books: BooksResolverService },
     children: [
     { path: ':id', component: BookDetailsComponent },
-    { path: ':id/edit', component: BookEditComponent },
+    { path: ':id/edit',  component: BookEditComponent },
   ]},
   { path: 'books/:id/edit/sub', canDeactivate: [CanDeactivateGuard], component: BookEditSubComponent },
   { path: 'component-lifecycle', component: ComponentLifecycleComponent },
@@ -69,7 +68,7 @@ const appRoutes: Routes = [
   ] },
   { path: 'grid', component: GridLoopComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user', component: UserComponent },
+  { path: 'user', loadChildren: './main/components/user/user.module#UserModule' },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'feedback', component: FeedbackComponent },
