@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
@@ -18,7 +19,8 @@ export class UsersEditComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private usersService: UsersService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<{users: Users[]}>
   ) { }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 <h3>Ngrx Example</h3>
 <a class="btn btn-secondary btn-sm mx-1" [routerLink]="['/ngrx-users', 'add']">Add</a>
 <div class="row">
-  <div class="col-md-6" *ngFor="let user of users | async">
+  <div class="col-md-6" *ngFor="let user of (usersState | async).users">
     <div class="card border-secondary mb-3">
       <div class="card-header">{{user.username}}</div>
       <div class="card-body">

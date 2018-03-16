@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 // FormsModule --> for template driven forms
 // ReactiveFormsModule --> for reactive forms (model driven forms)
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -73,6 +74,7 @@ import { ModalComponent } from './main/components/ngrx/modal/modal.component';
 import { UsersAddComponent } from './main/components/ngrx/users-add/users-add.component';
 import { UsersListComponent } from './main/components/ngrx/users-list/users-list.component';
 import { PipeModule } from './main/shared/pipes/pipe.module';
+import { UsersReducer } from './main/components/ngrx/store/users.reducers';
 
 @NgModule({
   declarations: [
@@ -136,7 +138,8 @@ import { PipeModule } from './main/shared/pipes/pipe.module';
     AngularFireModule.initializeApp(environment.config, 'test-abf'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    PipeModule
+    PipeModule,
+    StoreModule.forRoot({usersReducer: UsersReducer})
   ],
   providers: [
     ApiService,
