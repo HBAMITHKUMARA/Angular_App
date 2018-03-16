@@ -1,10 +1,10 @@
 <fieldset>
-    <legend>Edit user details</legend>
-    <form [formGroup]="userForm" (ngSubmit)="addUser(userForm)">
+    <legend>Add new user</legend>
+    <form [formGroup]="userForm" (ngSubmit)="addUsers(userForm)">
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="id">Id</label>
-                <input formControlName="id" class="form-control" id="id" placeholder="Unique Id" readonly type="text">
+                <input formControlName="id" class="form-control" id="id" placeholder="Unique Id" type="text">
             </div>
             <div class="form-group col-md-8">
                 <label for="username">Username</label>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { Users } from '../../../shared/models';
-import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-users-list',
@@ -11,15 +11,12 @@ import { UsersService } from '../users.service';
 })
 export class UsersListComponent implements OnInit {
 
-  users: Observable<Users[]>;
-  // user: Observable<Users>;
+  usersState: Observable<{users: Users[]}>;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private store: Store<{usersReducer: {users: Users[]}}>) { }
 
   ngOnInit() {
-    this.users = this.usersService.getUsers();
-    // console.log('users:  ', this.users);
-    // this.user = this.usersService.getBook(1);
+    this.usersState = this.store.select('usersReducer');
   }
 
 }
