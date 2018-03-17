@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 
 import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
+import * as UsersActions from '../store/users.actions';
+import * as fromUserReducer from '../store/users.reducers';
 
 @Component({
   selector: 'app-users-edit',
@@ -20,7 +22,7 @@ export class UsersEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<{users: Users[]}>
+    private store: Store<fromUserReducer.AppState>
   ) { }
 
   ngOnInit() {
@@ -67,8 +69,8 @@ export class UsersEditComponent implements OnInit {
 
   saveChanges({ value, valid, disabled }: { value: Users, valid: boolean, disabled: boolean }) {
     this.user = this.userForm.value;
-    console.log('user form:  ', this.userForm);
-    console.log('user details:  ', this.user);
+    const payload = {index: this.user.id, user: this.user};
+    this.store.dispatch(new UsersActions.UpdateUser(payload));
   }
 
 }
