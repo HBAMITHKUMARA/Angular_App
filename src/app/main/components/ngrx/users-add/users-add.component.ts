@@ -5,7 +5,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
 import { Store } from '@ngrx/store';
-import { AddUser, AddUsers } from '../store/users.actions';
+import * as UsersActions from '../store/users.actions';
+import * as fromUserReducer from '../store/users.reducers';
 
 @Component({
   selector: 'app-users-add',
@@ -22,7 +23,7 @@ export class UsersAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<{users: Users[]}>
+    private store: Store<fromUserReducer.AppState>
   ) { }
 
   ngOnInit() {
@@ -70,7 +71,7 @@ export class UsersAddComponent implements OnInit {
     this.user = this.userForm.value;
     console.log('user form:  ', this.userForm);
     console.log('user details:  ', this.user);
-    this.store.dispatch(new AddUser(this.user));
+    this.store.dispatch(new UsersActions.AddUser(this.user));
   }
 
   addUsers({ value, valid, disabled }: { value: Users, valid: boolean, disabled: boolean }) {
@@ -80,7 +81,7 @@ export class UsersAddComponent implements OnInit {
     console.log('user details:  ', this.user);
     users.push(this.user);
     console.log('userssss details:  ', this.user);
-    this.store.dispatch(new AddUsers(users));
+    this.store.dispatch(new UsersActions.AddUsers(users));
   }
 
 }
