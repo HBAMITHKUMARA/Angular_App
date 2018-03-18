@@ -45,7 +45,7 @@ export class UsersEditComponent implements OnInit {
     .subscribe(
       (data) => {
         if (data.editedUserId > -1) {
-          console.log('data:  ', data.editedUser);
+          // console.log('data:  ', data.editedUser);
           this.userForm.patchValue(data.editedUser);
         }
       }
