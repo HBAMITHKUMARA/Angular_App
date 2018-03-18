@@ -21,8 +21,12 @@ export class UsersListComponent implements OnInit {
     this.usersState = this.store.select('usersReducer');
   }
 
-  deleteUser(data: any) {
-    this.store.dispatch(new UsersActions.DeleteUser({index: data.id}));
+  onEditUser(id: number) {
+    this.store.dispatch(new UsersActions.StartEdit({index: id}));
+  }
+
+  deleteUser(id: number) {
+    this.store.dispatch(new UsersActions.DeleteUser({index: id}));
   }
 
 }

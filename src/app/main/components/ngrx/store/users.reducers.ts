@@ -7,6 +7,8 @@ export interface AppState {
 
 export interface UserState {
     users: Users[];
+    editedUserId: number;
+    editedUser: Users;
 }
 
 const initialState: UserState = {
@@ -57,7 +59,9 @@ const initialState: UserState = {
               'bs': 'harness real-time e-markets'
             }
         }
-    ]
+    ],
+    editedUserId: -1,
+    editedUser: null
 };
 
 export function UsersReducer(state = initialState, action: UsersActions.UsersActions) {
@@ -73,8 +77,8 @@ export function UsersReducer(state = initialState, action: UsersActions.UsersAct
                 users: [...state.users, ...action.payload]
             };
         case UsersActions.UPDATE_USER:
-            const oldUser = state.users.find((u) => u.id === action.payload.index);
-            const userIndex = findIndex(state, action.payload.index);
+            const oldUser = state.users.find((u) => u.id === state.editedUserId);
+            const userIndex = findIndex(state, state.editedUserId);
             const updatedUser = {
                 ...oldUser,
                 ...action.payload.user
@@ -92,6 +96,13 @@ export function UsersReducer(state = initialState, action: UsersActions.UsersAct
             return {
                 ...state,
                 users: oldUsers
+            };
+        case UsersActions.START_EDIT:
+            const editedUser = state.users.find((u) => u.id === action.payload.index);
+            return {
+                ...state,
+                editedUser: editedUser,
+                editedUserId: action.payload.index
             };
         default:
             return state;

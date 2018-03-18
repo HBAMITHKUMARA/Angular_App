@@ -6,6 +6,7 @@ export const ADD_USER = 'ADD_USER';
 export const ADD_USERS = 'ADD_USERS';
 export const UPDATE_USER = 'UPDATE_USER';
 export const DELETE_USER = 'DELETE_USER';
+export const START_EDIT = 'START_EDIT';
 
 export class AddUser implements Action {
     readonly type = ADD_USER;
@@ -19,7 +20,7 @@ export class AddUsers implements Action {
 
 export class UpdateUser implements Action {
     readonly type = UPDATE_USER;
-    constructor(public payload: {index: number, user: Users}) { }
+    constructor(public payload: {user: Users}) { }
 }
 
 export class DeleteUser implements Action {
@@ -27,4 +28,9 @@ export class DeleteUser implements Action {
     constructor(public payload: {index: number}) { }
 }
 
-export type UsersActions = AddUser | AddUsers | UpdateUser | DeleteUser;
+export class StartEdit implements Action {
+    readonly type = START_EDIT;
+    constructor(public payload: {index: number}) { }
+}
+
+export type UsersActions = AddUser | AddUsers | UpdateUser | DeleteUser | StartEdit;

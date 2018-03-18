@@ -1,89 +1,108 @@
-<fieldset>
-    <legend>Edit user details</legend>
-    <form [formGroup]="userForm" (ngSubmit)="saveChanges(userForm)">
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="id">Id</label>
-                <input formControlName="id" class="form-control" id="id" placeholder="Unique Id" readonly type="text">
-            </div>
-            <div class="form-group col-md-8">
-                <label for="username">Username</label>
-                <input formControlName="username" class="form-control" id="username" placeholder="Username" readonly type="text">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="name">Name</label>
-                <input formControlName="name" class="form-control" id="name" placeholder="Enter your name" type="text">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="primaryEmail">Email</label>
-                <input formControlName="email" class="form-control" id="primaryEmail" placeholder="Primary Email" type="email">
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-6">
-                <label for="phone">Phone</label>
-                <input formControlName="phone" class="form-control" id="phone" placeholder="Phone" type="text">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="website">Website</label>
-                <input formControlName="website" class="form-control" id="website" placeholder="Website" type="text">
-            </div>
-        </div>
-        <div class="row" formGroupName="company">
-            <div class="form-group col-md-4">
-                <label for="companyName">Comapany Name</label>
-                <input formControlName="name" class="form-control" id="companyName" placeholder="Comapany" type="text">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="catchPhrase">Phrase</label>
-                <input formControlName="catchPhrase" class="form-control" id="catchPhrase" placeholder="Comapany" type="text">
-            </div>
-            <div class="form-group col-md-4">
-                <label for="bs">BS</label>
-                <input formControlName="bs" class="form-control" id="bs" placeholder="Comapany" type="text">
-            </div>
-        </div>
-
-        <div formGroupName="address">
+<div class="container-fluid">
+    <fieldset>
+        <legend>Edit user details</legend>
+        <form [formGroup]="userForm" (ngSubmit)="saveChanges(userForm)">
             <div class="form-row">
                 <div class="form-group col-md-4">
-                    <label for="streetAddress">Street</label>
-                    <input formControlName="street" class="form-control" id="streetAddress" placeholder="Street" type="text">
+                    <label for="id">Id</label>
+                    <input formControlName="id" class="form-control" id="id" placeholder="Unique Id" readonly type="text">
                 </div>
-                <div class="form-group col-md-3">
-                    <label for="suite">Suite</label>
-                    <input formControlName="suite" class="form-control" id="suite" placeholder="Suite" type="text">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="city">City</label>
-                    <input formControlName="city" class="form-control" id="city" placeholder="City" type="text">
-                </div>
-                <div class="form-group col-md-2">
-                    <label for="zipcode">Zipcode</label>
-                    <input formControlName="zipcode" class="form-control" id="zipcode" placeholder="Zipcode" type="email">
+                <div class="form-group col-md-8">
+                    <label for="username">Username</label>
+                    <input formControlName="username" class="form-control" id="username" placeholder="Username" readonly type="text">
                 </div>
             </div>
-            <div formGroupName="geo">
-              <div class="form-row">
-                  <div class="form-group col-md-4">
-                      <label for="longitude">Longitude</label>
-                      <input formControlName="lng" class="form-control" id="longitude" placeholder="Longitude" type="text">
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="latitude">Latitude</label>
-                      <input formControlName="lat" class="form-control" id="latitude" placeholder="Latitude" type="text">
-                  </div>
-              </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input formControlName="name" class="form-control" id="name" placeholder="Enter your name" type="text">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="primaryEmail">Email</label>
+                    <input formControlName="email" class="form-control" id="primaryEmail" placeholder="Primary Email" type="email">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" id="checkbox" type="checkbox">
-                <label class="form-check-label" for="checkbox">Check me out</label>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="phone">Phone</label>
+                    <input formControlName="phone" class="form-control" id="phone" placeholder="Phone" type="text">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="website">Website</label>
+                    <input formControlName="website" class="form-control" id="website" placeholder="Website" type="text">
+                </div>
             </div>
-        </div>
-        <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">Save Changes</button>
-    </form>
-</fieldset>
+            <div class="row" formGroupName="company">
+                <div class="form-group col-md-4">
+                    <label for="companyName">Comapany Name</label>
+                    <input formControlName="name" class="form-control" id="companyName" placeholder="Comapany" type="text">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="catchPhrase">Phrase</label>
+                    <input formControlName="catchPhrase" class="form-control" id="catchPhrase" placeholder="Comapany" type="text">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="bs">BS</label>
+                    <input formControlName="bs" class="form-control" id="bs" placeholder="Comapany" type="text">
+                </div>
+            </div>
+
+            <div formGroupName="address">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="streetAddress">Street</label>
+                        <input formControlName="street" class="form-control" id="streetAddress" placeholder="Street" type="text">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="suite">Suite</label>
+                        <input formControlName="suite" class="form-control" id="suite" placeholder="Suite" type="text">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="city">City</label>
+                        <input formControlName="city" class="form-control" id="city" placeholder="City" type="text">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="zipcode">Zipcode</label>
+                        <input formControlName="zipcode" class="form-control" id="zipcode" placeholder="Zipcode" type="email">
+                    </div>
+                </div>
+                <div formGroupName="geo">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="longitude">Longitude</label>
+                            <input formControlName="lng" class="form-control" id="longitude" placeholder="Longitude" type="text">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="latitude">Latitude</label>
+                            <input formControlName="lat" class="form-control" id="latitude" placeholder="Latitude" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" id="checkbox" type="checkbox">
+                    <label class="form-check-label" for="checkbox">Check me out</label>
+                </div>
+            </div>
+            <button 
+                class="btn btn-primary" 
+                type="button" 
+                data-toggle="modal" 
+                data-target="#confirmModal" 
+                data-backdrop="static"
+                [disabled]="userForm.invalid"
+                (click)="selectedIndex = userForm.value.id;">Save Changes
+            </button>
+        </form>
+    </fieldset>
+</div>
+
+<app-modal 
+  [index]="selectedIndex"
+  [id]="'confirmModal'" 
+  [content]="'Are you sure? You want save the changes for user: ' + selectedIndex"
+  [button1]="'Yupp! Save'"
+  [button1Type]="'primary'"
+  (childEvent)="saveChanges(userForm)">
+</app-modal>
