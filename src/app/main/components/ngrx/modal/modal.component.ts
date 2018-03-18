@@ -9,6 +9,8 @@ export class ModalComponent implements OnInit {
   @Input() index: number;
   @Input() id: string;
   @Input() content: string;
+  @Input() button1: string;
+  @Input() button1Type: string;
   @Output() childEvent = new EventEmitter();
 
   constructor() { }
@@ -16,8 +18,8 @@ export class ModalComponent implements OnInit {
   ngOnInit() {
   }
 
-  childEventFunction() {
-    this.childEvent.emit({event: 'delete', id: this.index});
+  childEventFunction(flag: boolean) {
+    this.childEvent.emit(flag);
   }
 
 }

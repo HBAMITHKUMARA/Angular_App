@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { Users } from '../../../shared/models';
@@ -22,23 +22,35 @@ export class UsersEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<fromUserReducer.AppState>
+    private store: Store<fromUserReducer.AppState>,
+    private router: Router
   ) { }
 
   ngOnInit() {
-    this.loadUser();
     this.formBuilderInit();
+    this.loadUser();
   }
 
   loadUser() {
-    this.route.params
-    .subscribe((params: Params) => {
-      const id = +params['id'];
-      this.usersService.getUser(id).subscribe((res) => {
-        this.user = res;
-        this.userForm.patchValue(this.user);
-      });
-    });
+    // this.route.params
+    // .subscribe((params: Params) => {
+    //   const id = +params['id'];
+    //   this.usersService.getUser(id).subscribe((res) => {
+    //     this.user = res;
+    //     this.userForm.patchValue(this.user);
+    //   });
+    // });
+
+    this.store.select('usersReducer')
+    .subscribe(
+      (data) => {
+        if (data.editedUserId > -1) {
+          console.log('data:  ', data.editedUser);
+          this.userForm.patchValue(data.editedUser);
+        }
+      }
+    );
+
   }
 
   formBuilderInit() {
@@ -69,8 +81,9 @@ export class UsersEditComponent implements OnInit {
 
   saveChanges({ value, valid, disabled }: { value: Users, valid: boolean, disabled: boolean }) {
     this.user = this.userForm.value;
-    const payload = {index: this.user.id, user: this.user};
+    const payload = {user: this.user};
     this.store.dispatch(new UsersActions.UpdateUser(payload));
+    this.router.navigate(['ngrx-users']);
   }
 
 }

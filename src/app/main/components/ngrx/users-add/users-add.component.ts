@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
@@ -23,7 +23,8 @@ export class UsersAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<fromUserReducer.AppState>
+    private store: Store<fromUserReducer.AppState>,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -77,11 +78,12 @@ export class UsersAddComponent implements OnInit {
   addUsers({ value, valid, disabled }: { value: Users, valid: boolean, disabled: boolean }) {
     this.user = this.userForm.value;
     const users: Users[] = [];
-    console.log('user form:  ', this.userForm);
-    console.log('user details:  ', this.user);
+    // console.log('user form:  ', this.userForm);
+    // console.log('user details:  ', this.user);
     users.push(this.user);
-    console.log('userssss details:  ', this.user);
+    // console.log('userssss details:  ', this.user);
     this.store.dispatch(new UsersActions.AddUsers(users));
+    this.router.navigate(['ngrx-users']);
   }
 
 }
