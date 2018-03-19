@@ -37,10 +37,12 @@ import { UsersDetailComponent } from './main/components/ngrx/users-detail/users-
 import { UsersEditComponent } from './main/components/ngrx/users-edit/users-edit.component';
 import { UsersAddComponent } from './main/components/ngrx/users-add/users-add.component';
 import { UsersListComponent } from './main/components/ngrx/users-list/users-list.component';
+import { YoutubeComponent } from './main/components/youtube/youtube.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'youtube', component: YoutubeComponent },
   { path: 'ngrx-users', component: UsersComponent, children: [
     { path: '', component: UsersListComponent, pathMatch: 'full' },
     { path: 'add', component: UsersAddComponent },
