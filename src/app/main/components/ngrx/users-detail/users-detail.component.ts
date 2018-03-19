@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { UsersService } from '../users.service';
-import { Observable } from 'rxjs/Observable';
 import { Users } from '../../../shared/models';
+import * as UsersReducer from '../store/users.reducers';
+import * as UsersActions from '../store/users.actions';
 
 @Component({
   selector: 'app-users-detail',
@@ -14,7 +17,9 @@ export class UsersDetailComponent implements OnInit {
   id: number;
   user: Observable<Users>;
 
-  constructor(private route: ActivatedRoute, private usersService: UsersService) { }
+  constructor(private route: ActivatedRoute,
+              private usersService: UsersService,
+              private store: Store<UsersReducer.AppState>) { }
 
   ngOnInit() {
     this.route.params
@@ -26,6 +31,10 @@ export class UsersDetailComponent implements OnInit {
 
   isObject(data: any) {
     return typeof data === 'object';
+  }
+
+  onEditUser() {
+    this.store.dispatch(new UsersActions.StartEdit({index: this.id}));
   }
 
 }
