@@ -1,10 +1,6 @@
 import * as UsersActions from './users.actions';
 import { Users } from '../../../shared/models';
 
-export interface AppState {
-    usersReducer: UserState;
-}
-
 export interface UserState {
     users: Users[];
     editedUserId: number;
@@ -64,7 +60,7 @@ const initialState: UserState = {
     editedUser: null
 };
 
-export function UsersReducer(state = initialState, action: UsersActions.UsersActions) {
+export function usersReducer(state = initialState, action: UsersActions.UsersActions) {
     switch (action.type) {
         case UsersActions.ADD_USER:
             return {

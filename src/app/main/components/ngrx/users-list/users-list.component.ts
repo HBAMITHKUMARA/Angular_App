@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Users } from '../../../shared/models';
 import * as UsersActions from '../store/users.actions';
-import * as fromUserReducer from '../store/users.reducers';
+import * as fromAppReducer from '../../../store/app.reducers';
 
 @Component({
   selector: 'app-users-list',
@@ -15,7 +15,7 @@ export class UsersListComponent implements OnInit {
 
   usersState: Observable<{users: Users[]}>;
 
-  constructor(private store: Store<fromUserReducer.AppState>) { }
+  constructor(private store: Store<fromAppReducer.AppState>) { }
 
   ngOnInit() {
     this.usersState = this.store.select('usersReducer');

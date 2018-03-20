@@ -74,8 +74,8 @@ import { ModalComponent } from './main/components/ngrx/modal/modal.component';
 import { UsersAddComponent } from './main/components/ngrx/users-add/users-add.component';
 import { UsersListComponent } from './main/components/ngrx/users-list/users-list.component';
 import { PipeModule } from './main/shared/pipes/pipe.module';
-import { UsersReducer } from './main/components/ngrx/store/users.reducers';
 import { YoutubeComponent } from './main/components/youtube/youtube.component';
+import { reducers } from './main/store/app.reducers';
 
 @NgModule({
   declarations: [
@@ -141,7 +141,7 @@ import { YoutubeComponent } from './main/components/youtube/youtube.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     PipeModule,
-    StoreModule.forRoot({usersReducer: UsersReducer})
+    StoreModule.forRoot(reducers)
   ],
   providers: [
     ApiService,
