@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../auth/auth.service';
+import * as fromAuthReducer from '../../auth/store/auth.reducers';
+import * as fromAppReducer from '../../store/app.reducers';
+import * as fromAuthActions from '../../auth/store/auth.actions';
 
 @Component({
   selector: 'app-home',
@@ -9,20 +14,16 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  loginStatus: boolean;
+  authState: Observable<fromAuthReducer.State>;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private store: Store<fromAppReducer.AppState>) { }
 
   ngOnInit() {
-    this.authService.authenticated.subscribe(
-      (res: boolean) => {
-        this.loginStatus = res;
-      }
-    );
+    this.authState = this.store.select('authReducer');
   }
 
   onLogout() {
-    this.authService.logout();
+    this.store.dispatch(new fromAuthActions.SignOut());
   }
 
 }

@@ -6,7 +6,7 @@ import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
 import { Store } from '@ngrx/store';
 import * as UsersActions from '../store/users.actions';
-import * as fromUserReducer from '../store/users.reducers';
+import * as fromAppReducer from '../../../store/app.reducers';
 
 @Component({
   selector: 'app-users-add',
@@ -23,7 +23,7 @@ export class UsersAddComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<fromUserReducer.AppState>,
+    private store: Store<fromAppReducer.AppState>,
     private router: Router
   ) { }
 

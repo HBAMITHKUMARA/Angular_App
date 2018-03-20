@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import { Users } from '../../../shared/models';
 import { UsersService } from '../users.service';
 import * as UsersActions from '../store/users.actions';
-import * as fromUserReducer from '../store/users.reducers';
+import * as fromAppReducer from '../../../store/app.reducers';
 
 @Component({
   selector: 'app-users-edit',
@@ -22,7 +22,7 @@ export class UsersEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersService: UsersService,
     private route: ActivatedRoute,
-    private store: Store<fromUserReducer.AppState>,
+    private store: Store<fromAppReducer.AppState>,
     private router: Router
   ) { }
 
@@ -45,7 +45,6 @@ export class UsersEditComponent implements OnInit {
     .subscribe(
       (data) => {
         if (data.editedUserId > -1) {
-          // console.log('data:  ', data.editedUser);
           this.userForm.patchValue(data.editedUser);
         }
       }

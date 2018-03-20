@@ -5,8 +5,9 @@ import { Store } from '@ngrx/store';
 
 import { UsersService } from '../users.service';
 import { Users } from '../../../shared/models';
-import * as UsersReducer from '../store/users.reducers';
 import * as UsersActions from '../store/users.actions';
+
+import * as fromAppReducer from '../../../store/app.reducers';
 
 @Component({
   selector: 'app-users-detail',
@@ -19,7 +20,7 @@ export class UsersDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private usersService: UsersService,
-              private store: Store<UsersReducer.AppState>) { }
+              private store: Store<fromAppReducer.AppState>) { }
 
   ngOnInit() {
     this.route.params

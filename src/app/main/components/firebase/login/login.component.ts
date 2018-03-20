@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../../auth/auth.service';
+import * as fromAppReducer from '../../../store/app.reducers';
+
 
 @Component({
   selector: 'app-login',
@@ -10,57 +13,40 @@ import { AuthService } from '../../../auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   targetUrl: string;
-  loginStatus = false;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store<fromAppReducer.AppState>
   ) { }
 
   ngOnInit() {
     this.targetUrl = this.route.snapshot.queryParams['targetUrl'];
+    this.store.select('authReducer')
+    .subscribe(
+      (auth) => {
+        if (auth.authenticated) {
+          this.router.navigateByUrl(this.targetUrl);
+        }
+      }
+    );
   }
 
   signInWithGoogle() {
-    this.authService.authenticated.subscribe(
-      (res: boolean) => {
-        this.loginStatus = res;
-      }
-    );
-    if (this.loginStatus) {
-      this.router.navigateByUrl(this.targetUrl);
-    } else {
-      this.authService.signInWithGoogle()
-      .then((res) => {
-        this.router.navigateByUrl(this.targetUrl);
-        })
-      .catch((err) => console.log(err));
-    }
+    this.authService.signInWithGoogle();
   }
 
   signInWithGithub() {
-    this.authService.signInWithGithub()
-    .then((res) => {
-      this.router.navigateByUrl(this.targetUrl);
-      })
-    .catch((err) => console.log(err));
+    this.authService.signInWithGithub();
   }
 
   signInWithTwitter() {
-    this.authService.signInWithTwitter()
-    .then((res) => {
-      this.router.navigateByUrl(this.targetUrl);
-      })
-    .catch((err) => console.log(err));
+    this.authService.signInWithTwitter();
   }
 
   signInWithFacebook() {
-    this.authService.signInWithFacebook()
-    .then((res) => {
-      this.router.navigateByUrl(this.targetUrl);
-      })
-    .catch((err) => console.log(err));
+    this.authService.signInWithFacebook();
   }
 
 }
