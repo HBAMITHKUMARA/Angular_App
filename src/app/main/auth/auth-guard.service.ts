@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
 
 import { AuthService } from '../auth/auth.service';
 import * as fromAppReducer from '../store/app.reducers';
-import * as fromAuthReducer from '../auth/store/auth.actions';
+import * as fromAuthReducer from '../auth/store/auth.reducers';
 
 @Injectable()
 export class AuthGuard implements OnInit, CanActivate {
@@ -21,26 +21,14 @@ export class AuthGuard implements OnInit, CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    this.store.select('authReducer').subscribe(
-      (res) => {
-        if (res.authenticated === true) {
-          return true;
+    return this.store.select('authReducer').map(
+      (authState: fromAuthReducer.State) => {
+        if (!authState.authenticated) {
+          this.router.navigate(['/login'], { queryParams: { targetUrl: state.url }});
         }
+        return authState.authenticated;
       }
     );
-
-    console.log('isloggedIn:  ', this.authService.isLoggedIn());
-
-    return this.authService.isLoggedIn()
-    .take(1)
-    .map(user => !!user)
-    .do(loggedIn => {
-      if (!loggedIn) {
-        console.log('access denied');
-        this.router.navigate(['/login'], { queryParams: { targetUrl: state.url }});
-      }
-    });
-
   }
 
 }

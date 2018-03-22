@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -76,6 +76,8 @@ import { UsersListComponent } from './main/components/ngrx/users-list/users-list
 import { PipeModule } from './main/shared/pipes/pipe.module';
 import { YoutubeComponent } from './main/components/youtube/youtube.component';
 import { reducers } from './main/store/app.reducers';
+import { AuthInterceptor } from './main/auth/auth.interceptor';
+import { LoggingInterceptor } from './main/auth/logging.interceptor';
 
 @NgModule({
   declarations: [
@@ -157,7 +159,10 @@ import { reducers } from './main/store/app.reducers';
     BooksAuthService,
     BooksAuthGuard,
     WindowService,
-    UsersService ],
+    UsersService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true }
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
