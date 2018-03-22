@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   onLogout() {
-    this.store.dispatch(new fromAuthActions.SignOut());
+    this.authService.logout();
   }
 
 }
