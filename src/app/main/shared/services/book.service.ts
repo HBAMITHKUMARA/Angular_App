@@ -15,7 +15,8 @@ export class BookService {
   }
 
   getBook(id: number): Observable<Book> {
-    return this.apiService.get('./assets/data/books.json', new HttpParams())
+    const params = new HttpParams().set('auth', 'token');
+    return this.apiService.get('./assets/data/books.json', params)
     .map(
       (books) => {
         return books.find((book) => {
