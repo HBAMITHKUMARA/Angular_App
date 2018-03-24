@@ -15,18 +15,18 @@ export class AuthService implements OnInit {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
 
-  constructor(private firebaseAuth: AngularFireAuth,
+  constructor(private angularFireAuth: AngularFireAuth,
               private router: Router,
               private store: Store<fromAppReducer.AppState>) {
-    this.user = firebaseAuth.authState;
+    this.user = angularFireAuth.authState;
     this.user.subscribe(
       (user) => {
         if (user) {
           this.userDetails = user;
           this.store.dispatch(new fromAuthActions.SignIn());
-          let tokenId = '';
-          user.getIdToken().then((res) => tokenId = res);
-          this.store.dispatch(new fromAuthActions.SetToken({token: tokenId}));
+          user.getIdToken().then((tokenId) => {
+            this.store.dispatch(new fromAuthActions.SetToken({token: tokenId}));
+          });
           console.log('user:  ', user);
           console.log('userDetails:  ', this.userDetails);
         } else {
@@ -39,8 +39,29 @@ export class AuthService implements OnInit {
   ngOnInit() {
   }
 
+
+  signInWithEmailPassword(user: {email: string, password: string}) {
+    this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password)
+    .then(
+      (auth) => {
+        this.store.dispatch(new fromAuthActions.SignIn());
+        this.store.dispatch(new fromAuthActions.SetToken({token: auth.token}));
+      }
+    );
+  }
+
+  signUpWithEmailPassword(user: {email: string, password: string}) {
+    this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
+    .then(
+      (auth) => {
+        this.store.dispatch(new fromAuthActions.SignIn());
+        this.store.dispatch(new fromAuthActions.SetToken({token: auth.token}));
+      }
+    );
+  }
+
   signInWithGoogle() {
-    this.firebaseAuth.auth.signInWithPopup(
+    this.angularFireAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     ).then(
       (auth) => {
@@ -51,19 +72,19 @@ export class AuthService implements OnInit {
   }
 
   signInWithGithub() {
-    return this.firebaseAuth.auth.signInWithPopup(
+    return this.angularFireAuth.auth.signInWithPopup(
       new firebase.auth.GithubAuthProvider()
     );
   }
 
   signInWithTwitter() {
-    return this.firebaseAuth.auth.signInWithPopup(
+    return this.angularFireAuth.auth.signInWithPopup(
       new firebase.auth.TwitterAuthProvider()
     );
   }
 
   signInWithFacebook() {
-    return this.firebaseAuth.auth.signInWithPopup(
+    return this.angularFireAuth.auth.signInWithPopup(
       new firebase.auth.FacebookAuthProvider()
     );
   }
@@ -73,7 +94,7 @@ export class AuthService implements OnInit {
   }
 
   logout() {
-    this.firebaseAuth.auth.signOut()
+    this.angularFireAuth.auth.signOut()
     .then((res) => this.router.navigate(['/']));
     this.store.dispatch(new fromAuthActions.SignOut());
   }

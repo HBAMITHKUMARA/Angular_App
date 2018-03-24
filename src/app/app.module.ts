@@ -78,6 +78,8 @@ import { YoutubeComponent } from './main/components/youtube/youtube.component';
 import { reducers } from './main/store/app.reducers';
 import { AuthInterceptor } from './main/auth/auth.interceptor';
 import { LoggingInterceptor } from './main/auth/logging.interceptor';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './main/auth/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -143,7 +145,8 @@ import { LoggingInterceptor } from './main/auth/logging.interceptor';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     PipeModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [
     ApiService,

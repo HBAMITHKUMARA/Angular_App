@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../../auth/auth.service';
 import * as fromAppReducer from '../../../store/app.reducers';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 @Component({
@@ -13,12 +14,14 @@ import * as fromAppReducer from '../../../store/app.reducers';
 })
 export class LoginComponent implements OnInit {
   targetUrl: string;
+  testForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private store: Store<fromAppReducer.AppState>
+    private store: Store<fromAppReducer.AppState>,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
@@ -31,6 +34,22 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+    this.testFormBuilderInit();
+  }
+
+  testFormBuilderInit() {
+    this.testForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(5)]]
+    });
+  }
+
+  signInWithEmailPassword() {
+    this.authService.signInWithEmailPassword(this.testForm.value);
+  }
+
+  signUpWithEmailPassword() {
+    this.authService.signUpWithEmailPassword(this.testForm.value);
   }
 
   signInWithGoogle() {
