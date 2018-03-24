@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import {
     HttpInterceptor,
     HttpProgressEvent,
@@ -9,6 +10,8 @@ import {
     HttpUserEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
+
+@Injectable()
 export class AuthInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpSentEvent | HttpHeaderResponse | HttpProgressEvent | HttpResponse<any> | HttpUserEvent<any>> {
