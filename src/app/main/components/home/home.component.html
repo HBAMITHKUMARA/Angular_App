@@ -1,5 +1,5 @@
 <button class="btn btn-default btn-sm" type="button" (click)="onLogout()" *ngIf="(authState | async).authenticated">Logout</button>
-<p>test: {{(authState | async).authenticated}}</p>
+<p>authenticated: {{(authState | async).authenticated}}</p>
 <p>token: {{(authState | async).token === null ? 'null': 'not null;'}}</p>
 <div class="row">
   <div class="col-md-12">
