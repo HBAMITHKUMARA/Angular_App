@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { Effect, Actions } from '@ngrx/effects';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/take';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
 import * as AuthActions from './auth.actions';
@@ -12,7 +14,11 @@ import * as AuthActions from './auth.actions';
 @Injectable()
 export class AuthEffects {
 
-    constructor(private actions$: Actions, private angularFireAuth: AngularFireAuth ) {}
+    constructor(
+        private actions$: Actions,
+        private angularFireAuth: AngularFireAuth,
+        private router: Router,
+        private route: ActivatedRoute ) {}
 
     @Effect()
     authSignup = this.actions$
@@ -21,16 +27,14 @@ export class AuthEffects {
             return action.payload;
         })
         .switchMap((authData: {email: string, password: string}) => {
-            console.log('creating user for authData', authData);
             return fromPromise(this.angularFireAuth.auth
                 .createUserWithEmailAndPassword(authData.email, authData.password));
         })
         .switchMap(() => {
-            console.log('token from ngfire2 switchMAP');
-            return this.angularFireAuth.idToken;
+            return this.angularFireAuth.idToken.take(1);
         })
         .mergeMap((token: string) => {
-            console.log('token from ngfire2', token);
+            this.navigateToTargetUrl();
             return [
                 {
                     type: AuthActions.SIGNUP
@@ -41,5 +45,58 @@ export class AuthEffects {
                 }
             ];
         });
+
+    @Effect()
+    authSignIn = this.actions$
+        .ofType(AuthActions.TRY_SIGNIN)
+        .map((action: AuthActions.TrySignIn) => {
+            return action.payload;
+        })
+        .switchMap((authData: {email: string, password: string}) => {
+            return fromPromise(this.angularFireAuth.auth
+                .signInWithEmailAndPassword(authData.email, authData.password));
+        })
+        .switchMap(() => {
+            return this.angularFireAuth.idToken.take(1);
+        })
+        .mergeMap((token: string) => {
+            this.navigateToTargetUrl();
+            return [
+                {
+                    type: AuthActions.SIGNIN
+                },
+                {
+                    type: AuthActions.SET_TOKEN,
+                    payload: {token: token}
+                }
+            ];
+        });
+
+    @Effect()
+    authLogOut = this.actions$
+        .ofType(AuthActions.TRY_SIGNOUT)
+        .map(() => {
+            return fromPromise(this.angularFireAuth.auth.signOut());
+        })
+        .mergeMap(() => {
+            this.navigateToTargetUrl();
+            return [
+                {
+                    type: AuthActions.SIGNOUT
+                },
+                {
+                    type: AuthActions.SET_TOKEN,
+                    payload: {token: null}
+                }
+            ];
+        });
+
+    navigateToTargetUrl() {
+        let targetUrl = this.route.snapshot.queryParams['targetUrl'];
+        if (targetUrl === undefined) {
+            targetUrl = '';
+        }
+        this.router.navigate([targetUrl]);
+    }
 
 }

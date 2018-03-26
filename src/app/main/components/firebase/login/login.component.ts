@@ -25,15 +25,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.targetUrl = this.route.snapshot.queryParams['targetUrl'];
-    this.store.select('authReducer')
-    .subscribe(
-      (auth) => {
-        if (auth.authenticated) {
-          this.router.navigateByUrl(this.targetUrl);
-        }
-      }
-    );
     this.testFormBuilderInit();
   }
 
@@ -45,11 +36,11 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithEmailPassword() {
-    this.authService.signInWithEmailPassword(this.testForm.value);
+    const user: {email: string, password: string} = this.testForm.value;
+    this.store.dispatch(new AuthActions.TrySignIn(user));
   }
 
   signUpWithEmailPassword() {
-    // this.authService.signUpWithEmailPassword(this.testForm.value);
     const user: {email: string, password: string} = this.testForm.value;
     this.store.dispatch(new AuthActions.TrySignUp(user));
   }
