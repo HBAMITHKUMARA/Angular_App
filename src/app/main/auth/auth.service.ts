@@ -17,46 +17,25 @@ export class AuthService implements OnInit {
   constructor(private angularFireAuth: AngularFireAuth,
               private router: Router,
               private store: Store<fromAppReducer.AppState>) {
-    this.user = angularFireAuth.authState;
-    this.user.subscribe(
-      (user) => {
-        if (user) {
-          this.userDetails = user;
-          this.store.dispatch(new fromAuthActions.SignIn());
-          user.getIdToken().then((tokenId) => {
-            this.store.dispatch(new fromAuthActions.SetToken({token: tokenId}));
-          });
-          console.log('user:  ', user);
-          console.log('userDetails:  ', this.userDetails);
-        } else {
-          this.userDetails = null;
-        }
-      }
-    );
+    // this.user = angularFireAuth.authState;
+    // this.user.subscribe(
+    //   (user) => {
+    //     if (user) {
+    //       this.userDetails = user;
+    //       this.store.dispatch(new fromAuthActions.SignIn());
+    //       user.getIdToken().then((tokenId) => {
+    //         this.store.dispatch(new fromAuthActions.SetToken({token: tokenId}));
+    //       });
+    //       console.log('user:  ', user);
+    //       console.log('userDetails:  ', this.userDetails);
+    //     } else {
+    //       this.userDetails = null;
+    //     }
+    //   }
+    // );
   }
 
   ngOnInit() {
-  }
-
-
-  signInWithEmailPassword(user: {email: string, password: string}) {
-    this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password)
-    .then(
-      (auth) => {
-        this.store.dispatch(new fromAuthActions.SignIn());
-        this.store.dispatch(new fromAuthActions.SetToken({token: auth.token}));
-      }
-    );
-  }
-
-  signUpWithEmailPassword(user: {email: string, password: string}) {
-    this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
-    .then(
-      (auth) => {
-        this.store.dispatch(new fromAuthActions.SignIn());
-        this.store.dispatch(new fromAuthActions.SetToken({token: auth.token}));
-      }
-    );
   }
 
   signInWithGoogle() {
@@ -88,17 +67,4 @@ export class AuthService implements OnInit {
     );
   }
 
-  isLoggedIn() {
-    return this.user;
-  }
-
-  logout() {
-    this.angularFireAuth.auth.signOut()
-    .then((res) => this.router.navigate(['/']));
-    this.store.dispatch(new fromAuthActions.SignOut());
-    const payload = {
-      token: null
-    };
-    this.store.dispatch(new fromAuthActions.SetToken(payload));
-  }
 }
