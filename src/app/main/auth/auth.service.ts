@@ -4,7 +4,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Store } from '@ngrx/store';
 
 import * as fromAppReducer from '../store/app.reducers';
@@ -97,5 +96,9 @@ export class AuthService implements OnInit {
     this.angularFireAuth.auth.signOut()
     .then((res) => this.router.navigate(['/']));
     this.store.dispatch(new fromAuthActions.SignOut());
+    const payload = {
+      token: null
+    };
+    this.store.dispatch(new fromAuthActions.SetToken(payload));
   }
 }

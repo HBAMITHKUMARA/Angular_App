@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 import { AuthService } from '../../../auth/auth.service';
 import * as fromAppReducer from '../../../store/app.reducers';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import * as AuthActions from '../../../auth/store/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit {
   }
 
   signUpWithEmailPassword() {
-    this.authService.signUpWithEmailPassword(this.testForm.value);
+    // this.authService.signUpWithEmailPassword(this.testForm.value);
+    const user: {email: string, password: string} = this.testForm.value;
+    this.store.dispatch(new AuthActions.TrySignUp(user));
   }
 
   signInWithGoogle() {
