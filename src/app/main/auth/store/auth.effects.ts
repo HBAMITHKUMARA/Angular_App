@@ -91,6 +91,28 @@ export class AuthEffects {
             ];
         });
 
+    @Effect()
+    userSession = this.actions$
+        .ofType(AuthActions.SIGNIN_BY_USER_SESSION)
+        .map(() => {
+            return this.angularFireAuth.authState;
+        })
+        .switchMap(() => {
+            return this.angularFireAuth.idToken.take(1);
+        })
+        .mergeMap((token: string) => {
+            this.navigateToTargetUrl();
+            return [
+                {
+                    type: AuthActions.SIGNIN
+                },
+                {
+                    type: AuthActions.SET_TOKEN,
+                    payload: {token: token}
+                }
+            ];
+        });
+
     navigateToTargetUrl() {
         let targetUrl = this.route.snapshot.queryParams['targetUrl'];
         if (targetUrl === undefined) {

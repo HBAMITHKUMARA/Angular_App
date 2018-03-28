@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import * as fromAppReducer from './main/store/app.reducers';
+import * as fromAuthActions from './main/auth/store/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +11,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<fromAppReducer.AppState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromAuthActions.SigninByUserSession());
   }
 
 }
