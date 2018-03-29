@@ -1,6 +1,10 @@
 import * as fromUserActions from './user-lazy.actions';
 import { UserLazy } from '../../../shared/models';
 
+export interface FeatureState {
+    user: UserLazyState;
+}
+
 export interface UserLazyState {
     user: UserLazy;
 }
@@ -13,7 +17,8 @@ export function userLazyReducer(state = initialState, action: fromUserActions.Us
     switch (action.type) {
         case fromUserActions.USER:
             return {
-                ...state
+                ...state,
+                user: action.payload
             };
         default: {
             return {
