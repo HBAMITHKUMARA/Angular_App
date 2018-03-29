@@ -14,16 +14,16 @@ export class UserLazyEffects {
     constructor(private actions$: Actions,
                 private httpClient: HttpClient) {}
 
-    // @Effect()
-    // loadUser = this.actions$
-    // .ofType(UserLazyActions.LOAD_USER)
-    // .map(() => {
-    //     return this.httpClient.get('./assets/data/user.json');
-    // })
-    // .switchMap((user: Observable<UserLazy>) => {
-    //     return {
-    //         type: UserLazyActions.USER,
-    //         payload: user
-    //     };
-    // });
+    @Effect()
+    loadUser = this.actions$
+    .ofType(UserLazyActions.LOAD_USER)
+    .switchMap((action: UserLazyActions.LoadUser) => {
+        return this.httpClient.get<UserLazy>('./assets/data/user.json');
+    })
+    .map((user: UserLazy) => {
+        return {
+            type: UserLazyActions.USER,
+            payload: user
+        };
+    });
 }

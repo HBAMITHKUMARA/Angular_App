@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
+import { Store } from '@ngrx/store';
 
 import { CommonService } from '../../shared/services';
+import { UserLazy } from '../../shared/models';
+import * as fromUserReducer from './store/user-lazy.reducer';
+import * as fromUserAction from './store/user-lazy.actions';
 
 @Component({
   selector: 'app-user',
@@ -15,8 +19,10 @@ export class UserComponent implements OnInit {
   user = {};
   payment = {};
   contact = {};
+  userState: any;
 
-  constructor(private commonService: CommonService) { }
+  constructor(private commonService: CommonService,
+              private store: Store<fromUserReducer.FeatureState>) { }
 
   ngOnInit() {
     // retrieving data from server with seperate Observable
@@ -25,6 +31,8 @@ export class UserComponent implements OnInit {
 
     // retrieving data from server with Observable forkedjoin
     this.populate();
+    this.store.dispatch(new fromUserAction.LoadUser());
+    this.userState = this.store.select('user');
   }
 
   populate() {
