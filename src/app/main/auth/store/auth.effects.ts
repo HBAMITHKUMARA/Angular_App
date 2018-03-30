@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import 'rxjs/add/observable/empty';
 
 import * as AuthActions from './auth.actions';
 
@@ -78,7 +79,8 @@ export class AuthEffects {
         .map(() => {
             return fromPromise(this.angularFireAuth.auth.signOut());
         })
-        .mergeMap(() => {
+        .mergeMap((res) => {
+            console.log('logout res', res);
             this.navigateToTargetUrl();
             return [
                 {
@@ -102,6 +104,9 @@ export class AuthEffects {
         })
         .mergeMap((token: string) => {
             this.navigateToTargetUrl();
+            if (!token) {
+                return Observable.empty<null>();
+            }
             return [
                 {
                     type: AuthActions.SIGNIN
