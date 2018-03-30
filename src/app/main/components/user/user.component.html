@@ -1,73 +1,64 @@
-{{ userState | async | json }}
+{{userState | async | json}}
 
+<!-- <div class="card">
+  <div class="card-header">
+    {{user.userName}}
+  </div>
+  <div class="card-body">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-user-profile-tab" data-toggle="tab" href="#nav-user-profile" role="tab" aria-controls="nav-user-profile" aria-selected="false">Profile</a>
+        <a class="nav-item nav-link" id="nav-user-home-tab" data-toggle="tab" href="#nav-user-home" role="tab" aria-controls="nav-user-home" aria-selected="true">Account</a>
+        <a class="nav-item nav-link" id="nav-user-contact-tab" data-toggle="tab" href="#nav-user-contact" role="tab" aria-controls="nav-user-contact" aria-selected="false">Contact</a>
+      </div>
+    </nav>
 
-
-<!-- <div [hidden]="!loadingUserComponent">
-  Loading...
-</div>
-
-<div [hidden]="loadingUserComponent" *ngIf="!loadingUserComponent">
-  <div class="card">
-    <div class="card-header">
-      {{user.userName}}
-    </div>
-    <div class="card-body">
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-          <a class="nav-item nav-link active" id="nav-user-profile-tab" data-toggle="tab" href="#nav-user-profile" role="tab" aria-controls="nav-user-profile" aria-selected="false">Profile</a>
-          <a class="nav-item nav-link" id="nav-user-home-tab" data-toggle="tab" href="#nav-user-home" role="tab" aria-controls="nav-user-home" aria-selected="true">Account</a>
-          <a class="nav-item nav-link" id="nav-user-contact-tab" data-toggle="tab" href="#nav-user-contact" role="tab" aria-controls="nav-user-contact" aria-selected="false">Contact</a>
-        </div>
-      </nav>
-
-      <div class="tab-content mt-2" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-user-profile" role="tabpanel" aria-labelledby="nav-user-profile-tab">
-          <p class="card-text">{{user.fullName}}</p>
-          <p class="card-text">{{user.email}}</p>
-        </div>
-        <div class="tab-pane fade" id="nav-user-home" role="tabpanel" aria-labelledby="nav-user-home-tab">
-          <p class="card-text">Payment details</p>
-          <ul>
-            <li *ngFor="let card of payment.cards">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>Card Type</td>
-                    <td>{{card.type}}</td>
-                  </tr>
-                  <tr>
-                    <td>UPI</td>
-                    <td>{{card.upi}}</td>
-                  </tr>
-                  <tr>
-                    <td>Card Number</td>
-                    <td>{{card.number}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </li>
-          </ul>
-        </div>
-        <div class="tab-pane fade" id="nav-user-contact" role="tabpanel" aria-labelledby="nav-user-contact-tab">
-          <p class="card-text">Contact details</p>
-            <div *ngFor="let modes of contact | keys">
-              <table class="table table-hover">
-                <tbody>
-                  <tr>{{modes.key}}</tr>
-                  <tr>
-                    <td>Primary</td>
-                    <td>{{modes.value.primary}}</td>
-                  </tr>
-                  <tr>
-                    <td>Secondary</td>
-                    <td>{{modes.value.secondary}}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        </div>
+    <div class="tab-content mt-2" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-user-profile" role="tabpanel" aria-labelledby="nav-user-profile-tab">
+        <p class="card-text">{{user.fullName}}</p>
+        <p class="card-text">{{user.email}}</p>
+      </div>
+      <div class="tab-pane fade" id="nav-user-home" role="tabpanel" aria-labelledby="nav-user-home-tab">
+        <p class="card-text">Payment details</p>
+        <ul>
+          <li *ngFor="let card of payment.cards">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>Card Type</td>
+                  <td>{{card.type}}</td>
+                </tr>
+                <tr>
+                  <td>UPI</td>
+                  <td>{{card.upi}}</td>
+                </tr>
+                <tr>
+                  <td>Card Number</td>
+                  <td>{{card.number}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="nav-user-contact" role="tabpanel" aria-labelledby="nav-user-contact-tab">
+        <p class="card-text">Contact details</p>
+          <div *ngFor="let modes of contact | keys">
+            <table class="table table-hover">
+              <tbody>
+                <tr>{{modes.key}}</tr>
+                <tr>
+                  <td>Primary</td>
+                  <td>{{modes.value.primary}}</td>
+                </tr>
+                <tr>
+                  <td>Secondary</td>
+                  <td>{{modes.value.secondary}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
       </div>
     </div>
   </div>
 </div> -->
-
